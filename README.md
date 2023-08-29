@@ -1,9 +1,14 @@
 # Experimental MFE extensions plugin for Tutor
 
 This plugin is meant to be a collection of experimental changes to the
-tutor-mfe configuration. At the moment, it will be testing ground for CDN support
+tutor-mfe configuration. At the moment, it will be the testing ground for CDN support
 for MFEs.
 
+## Compatibility Table
+
+| Open edX release | Tutor version     | Tutor MFE Version                    | Plugin release |
+|------------------|-------------------|--------------------------------------|----------------|
+| Olive            | `>=15.0, <16`     | `edunext/tutor-mfe@15.0.7.post1`     | 1.x.x          |
 
 ## Installation
 
@@ -34,7 +39,7 @@ Until [`openedx/frontend-build#398`](https://github.com/openedx/frontend-build/p
 is merged.
 
 There is a custom version for each major release of `frontend-build` used by
-the 6 default MFEs in olive:
+the 7 default MFEs in olive:
 
 - account: `v12.0.6-cdn-support`
 - course-authoring: `v11.0.2-cdn-support`
@@ -44,8 +49,10 @@ the 6 default MFEs in olive:
 - learning: `v9.1.4-cdn-support`
 - profile: `v12.0.6-cdn-support`
 
-Because the `tutor-mfe` doesn't allow setting arbitrary ENV variables before
-build time we need to install a custom version during the olive release.
+In addition, we need to use a custom version of `tutor-mfe` to set extra environment
+variables before the build step. The custom version version of `tutor-mfe` is going
+to be needed for Olive installations and will eventually be dropped some time during
+the Palm release.
 
 ## License
 
