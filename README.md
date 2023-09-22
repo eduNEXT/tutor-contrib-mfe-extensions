@@ -13,7 +13,7 @@ for MFEs.
 ## Installation
 
 ```bash
-pip install git+https://github.com/edunext/tutor-contrib-mfe-extensions@v1.0.0#egg=tutor-contrib-mfe-extensions==v1.0.0
+pip install git+https://github.com/edunext/tutor-contrib-mfe-extensions@v1.1.0#egg=tutor-contrib-mfe-extensions==v1.1.0
 pip install git+https://github.com/edunext/tutor-mfe@v15.0.7.post1#egg=tutor-mfe==v15.0.7.post1
 ```
 
