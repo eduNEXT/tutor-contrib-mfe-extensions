@@ -1,0 +1,8 @@
+{%- if MFE_EXTENSIONS_BY_PATH %}
+{% for app in iter_values_named(suffix="MFE_APP") %}
+route {{app.name}}/* {
+    reverse_proxy mfe:8002
+    header_up Host {host}
+}
+{% endfor %}
+{%- endif %}

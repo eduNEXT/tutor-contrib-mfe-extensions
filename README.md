@@ -21,6 +21,9 @@ pip install git+https://github.com/edunext/tutor-mfe@v15.0.7.post1#egg=tutor-mfe
 
 - `MFE_EXTENSIONS_CDN_URL` (default: `""`) - The URL of your CDN
   (e.g `https://d1234abcd.cloudfront.net/`)
+- `MFE_EXTENSIONS_BY_PATH` (default: `True`) - When enabled will
+  add additional routes to caddy to enable routing each mfe through
+  a path of the LMS (e.g. `https://{LMS_HOST}/learning`).
 
 ## CDN Support
 
@@ -63,7 +66,50 @@ production). You will have to rebuild the image in the following scenarios:
 1. You have a working production image and want to enable CDN support: You must rebuild the image using the same parameters while setting the  `MFE_EXTENSIONS_CDN_URL` variable with your distribution.
 2. You modified your CDN endpoint and it now uses a different URL: Update the value of `MFE_EXTENSIONS_CDN_URL` to the new URL.
 3. You made changes to the code of any of the MFEs in the image and want to deploy a new version: If your configuration already had CDN support update the other parameters as you usually do in your deployment process, if it didn't have CDN suppport follow step #1.
+## Hosting by Path
 
+This plugin adds additional routes to caddy that allows you to serve any MFE defined
+by using the `MFE_APP_` variables through the LMS domain using the path:
+`https://{LMS_HOST}/{{MFE_CUSTOM_MFE_APP.name}}` where `name` corresponds to the 
+name variable defined
+[on each MFE setting](https://github.com/overhangio/tutor-mfe/blob/v15.0.6/tutormfe/plugin.py#L18).
+
+This is done by using the patch `{{ patch("caddyfile-mfe-by-path") }}` this patch will
+add a caddy snippet that will route `/{{MFE_CUSTOM_MFE_APP.name}}` to the MFE container,
+by adding this patch to the `caddyfile-lms` patch we can serve the MFE apps through the
+LMS domain.
+
+There are several reason why you may want to serve the MFEs through LMS paths instead
+of subdomains, the main one is to enable multisite support: instead of using
+a single global configuration you can have per-site configuration relying on the
+MFE Config API, each MFE can retrieve the configuration of their corresponding LMS
+site simply by defaulting to their base domain.
+
+To enable the snippets in your caddy routes make sure `MFE_EXTENSIONS_BY_PATH` is set
+to `True` (the default) and if you are using an additional caddy patch to enable
+additional routes you can include the `caddyfile-mfe-by-path` patch to your block:
+
+```
+    # caddyfile patch
+    {$default_site_port} {
+        @favicon_matcher {
+            path_regexp ^/favicon.ico$
+        }
+        rewrite @favicon_matcher /theming/asset/images/favicon.ico
+
+        {{ patch("caddyfile-mfe-by-path")|indent(4) }} # Adding this line will include the routes for each MFE.
+
+        # Limit profile image upload size
+        request_body /api/profile_images/*/*/upload {
+            max_size 1MB
+        }
+        request_body {
+            max_size 4MB
+        }
+        import proxy "lms:8000"
+
+    }
+```
 
 ## License
 
