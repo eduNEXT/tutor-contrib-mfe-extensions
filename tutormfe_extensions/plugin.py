@@ -145,8 +145,8 @@ hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
     # For example, ``tutormfe_extensions/templates/mfe_extensions/build``
     # will be rendered to ``$(tutor config printroot)/env/plugins/mfe_extensions/build``.
     [
-        ("mfe_extensions/build", "plugins"),
         ("mfe_extensions/apps", "plugins"),
+        ("mfe_extensions/k8s", "plugins"),
     ],
 )
 

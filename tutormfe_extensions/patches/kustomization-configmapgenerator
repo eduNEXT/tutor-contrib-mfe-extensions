@@ -1,0 +1,6 @@
+- name: mfeextensions-docker
+  files:
+    - plugins/mfe_extensions/apps/docker-entrypoint.sh
+  options:
+      labels:
+        apps.kubernetes.io/name: mfe
