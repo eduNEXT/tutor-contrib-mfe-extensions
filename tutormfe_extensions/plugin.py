@@ -22,6 +22,7 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
         ("MFE_EXTENSIONS_VERSION", __version__),
         ("MFE_EXTENSIONS_CDN_URL", ""),
         ("MFE_EXTENSIONS_BY_PATH", True),
+        ("MFE_EXTENSIONS_NPM_OVERRIDES", True),
     ]
 )
 
