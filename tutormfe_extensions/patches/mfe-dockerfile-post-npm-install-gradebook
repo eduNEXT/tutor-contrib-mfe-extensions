@@ -1,1 +1,3 @@
+{% if MFE_EXTENSIONS_NPM_OVERRIDES %}
 RUN npm install git+https://github.com/eduNEXT/frontend-build#v9.1.4-cdn-support
+{% endif %}
