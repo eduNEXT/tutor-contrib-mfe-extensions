@@ -1,0 +1,11 @@
+RUN mkdir -p /openedx/bin/ && cat <<EOF > /openedx/bin/docker-entrypoint.sh
+#!/bin/sh
+find /openedx/dist/ -type f -exec sed -i -e "s|MFE_EXTENSIONS_PLACEHOLDER_STRING|\$MFE_CDN_URL|g" {} \;
+exec "\$@"
+EOF
+
+RUN chmod a+x /openedx/bin/docker-entrypoint.sh
+
+ENTRYPOINT ["/openedx/bin/docker-entrypoint.sh"]
+
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
