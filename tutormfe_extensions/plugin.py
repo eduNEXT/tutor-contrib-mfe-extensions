@@ -22,7 +22,7 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
         ("MFE_EXTENSIONS_VERSION", __version__),
         ("MFE_EXTENSIONS_CDN_URL", ""),
         ("MFE_EXTENSIONS_BY_PATH", True),
-        ("MFE_EXTENSIONS_NPM_OVERRIDES", True),
+        ("MFE_EXTENSIONS_NPM_OVERRIDES", False),
     ]
 )
 
@@ -148,6 +148,7 @@ hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
     [
         ("mfe_extensions/apps", "plugins"),
         ("mfe_extensions/k8s", "plugins"),
+        ("mfe/build/mfe", "plugins"),
     ],
 )
 

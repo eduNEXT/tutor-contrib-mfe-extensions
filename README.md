@@ -8,7 +8,8 @@ for MFEs.
 
 | Open edX release | Tutor version     | Tutor MFE Version                    | Plugin release |
 |------------------|-------------------|--------------------------------------|----------------|
-| Olive            | `>=15.0, <16`     | `edunext/tutor-mfe@15.0.7.post1`     | 1.x.x          |
+| Nutmeg            | `>=14.0, <15`     | `edunext/tutor-mfe@nutmeg`          | 14.x.x         |
+| Olive            | `>=15.0, <16`     | `edunext/tutor-mfe@15.0.7.post1`     | 15.x.x          |
 
 ## Installation
 
