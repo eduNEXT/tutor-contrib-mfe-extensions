@@ -42,7 +42,20 @@ hooks.Filters.CONFIG_OVERRIDES.add_items(
         # Danger zone!
         # Add values to override settings from Tutor core or other plugins here.
         # Each override is a pair: (setting_name, new_value). For example:
-        ### ("PLATFORM_NAME", "My platform"),
+        (
+            "MFE_LEARNING_MFE_APP",
+            {
+                "name": "learning",
+                "repository": "https://github.com/eduNEXT/frontend-app-learning",
+                "env": {
+                    "production": {
+                        "PUBLIC_PATH": "MFE_EXTENSIONS_PLACEHOLDER_STRING/learning"
+                    }
+                },
+                "port": 2000,
+                "version": "ednx-release/nuez.master",
+            },
+        ),
     ]
 )
 
