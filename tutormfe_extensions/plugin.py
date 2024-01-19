@@ -148,7 +148,7 @@ hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
     [
         ("mfe_extensions/apps", "plugins"),
         ("mfe_extensions/k8s", "plugins"),
-        ("mfe/build/mfe", "plugins"),
+        ("mfe/build", "plugins"),
     ],
 )
 
