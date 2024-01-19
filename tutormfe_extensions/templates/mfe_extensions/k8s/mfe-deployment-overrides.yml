@@ -10,10 +10,3 @@ spec:
         - name: MFE_CDN_URL
           value: {{ MFE_EXTENSIONS_CDN_URL }}
         name: mfe
-        args:
-          - caddy
-          - run
-          - --config
-          - /etc/caddy/Caddyfile
-          - --adapter
-          - caddyfile
