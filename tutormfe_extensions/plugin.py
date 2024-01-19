@@ -48,7 +48,9 @@ hooks.Filters.CONFIG_OVERRIDES.add_items(
                 "repository": "https://github.com/eduNEXT/frontend-app-learning",
                 "env": {
                     "production": {
-                        "PUBLIC_PATH": "MFE_EXTENSIONS_PLACEHOLDER_STRING/learning"
+                        "PUBLIC_PATH": "MFE_EXTENSIONS_PLACEHOLDER_STRING/learning",
+                        "MFE_CONFIG_API_URL": "/api/mfe_config/v1",
+                        "APP_ID": "learning",
                     }
                 },
                 "port": 2000,
