@@ -53,9 +53,9 @@ In addition, we need to use a custom version of `tutor-mfe` that includes the pa
 ### Building Caveats
 
 The value of `publicPath` is fixed at build time, therefore it's not possible to reuse
-the MFE docker image if we set a it's value to a specific CDN endpoint.
+the MFE docker image if we set it's value to a specific CDN endpoint.
 To avoid this limitation we use a script
-[`docker-entrypoint.sh`](tutormfe_extensions/templates/mfe/build/docker-entrypoint.sh)
+[`docker-entrypoint.sh`](tutormfe_extensions/templates/mfe/build/mfe/docker-entrypoint.sh)
 to dinamically change a placeholder value used in `publicPath` each time the container is
 started. 
 
@@ -66,17 +66,21 @@ MFE_LEARNING_MFE_APP:
   env:
     production:
       PUBLIC_PATH: MFE_EXTENSIONS_PLACEHOLDER_STRING/learning
+      MFE_CONFIG_API_URL: /api/mfe_config/v1
+      APP_ID: learning
   name: learning
   port: 2000
   repository: https://github.com/eduNEXT/frontend-app-learning.git
   version: ednx-release/nuez.master
 ```
 
+The learning MFE in eduNEXT fork also has support for the [`MFE_CONFIG_API`](https://github.com/openedx/edx-platform/blob/master/lms/djangoapps/mfe_config_api/docs/decisions/0001-mfe-config-api.rst) in Nutmeg, you must also include the variables `MFE_CONFIG_API_URL` and `APP_ID` in your
+`config.yml` while building the MFE to enable the API.
+
 Once you enable the plugin and add the previous snippet to your configuration you can build
 an image with a _"dynamic"_ `publicPath`. By default the placeholder will be replaced by
 an empty string, which was the original value. In a Kubernetes environment it will be
-replaced by the value of `MFE_EXTENSIONS_CDN_URL`.
-
+replaced with the value of `MFE_EXTENSIONS_CDN_URL`.
 
 ## Hosting by Path
 
