@@ -1,3 +1,4 @@
+LEARNING_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/learning"
 MFE_CONFIG = {
     "PARAGON_THEME_URLS": {
         "core": {
@@ -11,5 +12,27 @@ MFE_CONFIG = {
                 "url": "https://css-varsify.s3.amazonaws.com/public/a9959998-0bab-4447-ada5-6819866195f3.css"
             }
         }
-    }
+    },
+    "ACCESS_TOKEN_COOKIE_NAME": "edx-jwt-cookie-header-payload",
+    "BASE_URL": "{{ MFE_HOST }}",
+    "CSRF_TOKEN_API_PATH": "/csrf/api/v1/token",
+    "CREDENTIALS_BASE_URL": "",
+    "DISCOVERY_API_BASE_URL": "{% if DISCOVERY_HOST is defined %}{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ DISCOVERY_HOST }}{% endif %}",
+    "ECOMMERCE_BASE_URL": "",
+    "ENABLE_NEW_RELIC": False,
+    "FAVICON_URL": "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/favicon.ico",
+    "LANGUAGE_PREFERENCE_COOKIE_NAME": "openedx-language-preference",
+    "LMS_BASE_URL": "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}",
+    "LOGIN_URL": "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/login",
+    "LOGO_URL": "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/theming/asset/images/logo.png",
+    "LOGO_TRADEMARK_URL": "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/theming/asset/images/logo.png",
+    "LOGO_WHITE_URL": "",
+    "LOGOUT_URL": "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/logout",
+    "MARKETING_SITE_BASE_URL": "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}",
+    "NODE_ENV": "production",
+    "PUBLISHER_BASE_URL": "",
+    "REFRESH_ACCESS_TOKEN_ENDPOINT": "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/login_refresh",
+    "SEGMENT_KEY": "",
+    "STUDIO_BASE_URL": "{{ 'https' if ENABLE_HTTPS else 'http' }}://{{ CMS_HOST }}",
+    "USER_INFO_COOKIE_NAME": "user-info",
 }
