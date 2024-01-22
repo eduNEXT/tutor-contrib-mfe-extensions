@@ -1,4 +1,5 @@
 LEARNING_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/learning"
+ENABLE_MFE_CONFIG_API = True
 MFE_CONFIG = {
     "PARAGON_THEME_URLS": {
         "core": {
