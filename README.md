@@ -8,13 +8,13 @@ for MFEs.
 
 | Open edX release | Tutor version     | Tutor MFE Version                    | Plugin release |
 |------------------|-------------------|--------------------------------------|----------------|
-| Olive            | `>=15.0, <16`     | `edunext/tutor-mfe@15.0.7.post1`     | 1.x.x          |
+| Nutmeg           | `>=13.0, <14`     | `edunext/tutor-mfe@14.0.2.post1`     | 14.x.x          |
 
 ## Installation
 
 ```bash
-pip install git+https://github.com/edunext/tutor-contrib-mfe-extensions@v1.1.0#egg=tutor-contrib-mfe-extensions==v1.1.0
-pip install git+https://github.com/edunext/tutor-mfe@v15.0.7.post1#egg=tutor-mfe==v15.0.7.post1
+pip install git+https://github.com/edunext/tutor-contrib-mfe-extensions@v14.0.0#egg=tutor-contrib-mfe-extensions==v14.0.0
+pip install git+https://github.com/edunext/tutor-mfe@v14.0.2.post1#egg=tutor-mfe==v14.0.2.post1
 ```
 
 ## Plugin Configuration
@@ -36,42 +36,51 @@ bundles of each MFE and simply serve a small index.html file through caddy.
 We use webpack's
 [`output.publicPath`](https://webpack.js.org/configuration/output/#outputpublicpath)
 to accomplish this. Due to current limitations in the building scripts
-we need to use a custom version of
-[`frontend-build`](https://github.com/eduNEXT/frontend-build/branches/all?query=cdn).
-Until [`openedx/frontend-build#398`](https://github.com/openedx/frontend-build/pull/398)
-is merged.
+we need to use custom versions of `frontend-platform` that include a backport of
+[`openedx/frontend-platform#568`](https://github.com/openedx/frontend-platform/pull/568)
+for releases previous to Quince.
 
-There is a custom version for each major release of `frontend-build` used by
-the 7 default MFEs in olive:
+The following is a list of supported MFEs for the current plugin version, each MFE is a
+custom fork hosted by eduNEXT. You might use your own fork, but you must include the backport
+mentioned before.
 
-- account: `v12.0.6-cdn-support`
-- course-authoring: `v11.0.2-cdn-support`
-- discussions: `v11.0.2-cdn-support`
-- authn: `v11.0.2-cdn-support`
-- gradebook: `v9.1.4-cdn-support`
-- learning: `v9.1.4-cdn-support`
-- profile: `v12.0.6-cdn-support`
 
-In addition, we need to use a custom version of `tutor-mfe` to set extra environment
-variables before the build step. The custom version version of `tutor-mfe` is going
-to be needed for Olive installations and will eventually be dropped some time during
-the Palm release.
+- Learning: [`eduNEXT/frontend-app-learning@ednx-release/nuez.master`](https://github.com/eduNEXT/frontend-app-learning/tree/ednx-release/nuez.master)
+
+In addition, we need to use a custom version of `tutor-mfe` that includes the patch
+`mfe-dockerfile-production-final` introduced in [`overhangio/tutor-mfe#179`](https://github.com/overhangio/tutor-mfe/pull/179). 
 
 ### Building Caveats
 
-At the moment each MFE image will be tied to a specific CDN endpoint. As a result,
-it isn't possible to reuse the MFE image between environments (namely Staging and
-production). You will have to rebuild the image in the following scenarios:
+The value of `publicPath` is fixed at build time, therefore it's not possible to reuse
+the MFE docker image if we set it's value to a specific CDN endpoint.
+To avoid this limitation we use a script
+[`docker-entrypoint.sh`](tutormfe_extensions/templates/mfe/build/mfe/docker-entrypoint.sh)
+to dinamically change a placeholder value used in `publicPath` each time the container is
+started. 
 
-1. You have a working production image and want to enable CDN support: You must
-   rebuild the image using the same parameters while setting the
-   `MFE_EXTENSIONS_CDN_URL` variable with your distribution.
-2. You modified your CDN endpoint and it now uses a different URL: Update the
-   value of `MFE_EXTENSIONS_CDN_URL` to the new URL.
-3. You made changes to the code of any of the MFEs in the image and want to
-   deploy a new version: If your configuration already had CDN support update
-   the other parameters as you usually do in your deployment process, if it
-   didn't have CDN support follow step #1.
+We need to make sure our image is built using the placeholder `MFE_EXTENSIONS_PLACEHOLDER_STRING/app_name` as our `publicPath` (where `app_name` refers to the value of `MFE_MYMFE_MFE_APP.name`). In Nutmeg you configure `PUBLIC_PATH` through the `config.yml` file:
+
+```yaml
+MFE_LEARNING_MFE_APP:
+  env:
+    production:
+      PUBLIC_PATH: MFE_EXTENSIONS_PLACEHOLDER_STRING/learning
+      MFE_CONFIG_API_URL: /api/mfe_config/v1
+      APP_ID: learning
+  name: learning
+  port: 2000
+  repository: https://github.com/eduNEXT/frontend-app-learning.git
+  version: ednx-release/nuez.master
+```
+
+The learning MFE in eduNEXT fork also has support for the [`MFE_CONFIG_API`](https://github.com/openedx/edx-platform/blob/master/lms/djangoapps/mfe_config_api/docs/decisions/0001-mfe-config-api.rst) in Nutmeg, you must also include the variables `MFE_CONFIG_API_URL` and `APP_ID` in your
+`config.yml` while building the MFE to enable the API.
+
+Once you enable the plugin and add the previous snippet to your configuration you can build
+an image with a _"dynamic"_ `publicPath`. By default the placeholder will be replaced by
+an empty string, which was the original value. In a Kubernetes environment it will be
+replaced with the value of `MFE_EXTENSIONS_CDN_URL`.
 
 ## Hosting by Path
 
