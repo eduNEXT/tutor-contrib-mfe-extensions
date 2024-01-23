@@ -51,6 +51,8 @@ mentioned before.
 - Account: [`eduNEXT/frontend-app-account@ednx-release/olmo.master`](https://github.com/eduNEXT/frontend-app-account/tree/ednx-release/olmo.master)
 - Discussions: [`eduNEXT/frontend-app-discussions@ednx-release/olmo.master`](https://github.com/eduNEXT/frontend-app-discussions/tree/ednx-release/olmo.master)
 - Gradebook: [`eduNEXT/frontend-app-gradebook@ednx-release/olmo.master`](https://github.com/eduNEXT/frontend-app-gradebook/tree/ednx-release/olmo.master)
+- Ora Grading: [`eduNEXT/frontend-app-ora-grading@ednx-release/olmo.master`](https://github.com/eduNEXT/frontend-app-ora-grading/tree/ednx-release/olmo.master)
+- Communications: [`eduNEXT/frontend-app-communications@ednx-release/olmo.master`](https://github.com/eduNEXT/frontend-app-communications/tree/ednx-release/olmo.master)
 
 In addition, we need to use a custom version of `tutor-mfe` that includes the patch
 `mfe-dockerfile-production-final` introduced in [`overhangio/tutor-mfe#179`](https://github.com/overhangio/tutor-mfe/pull/179).
