@@ -8,8 +8,8 @@ for MFEs.
 
 | Open edX release | Tutor version     | Tutor MFE Version                    | Plugin release |
 |------------------|-------------------|--------------------------------------|----------------|
-| Nutmeg           | `>=13.0, <14`     | `edunext/tutor-mfe@14.0.2.post1`     | 14.x.x          |
-| Olive           | `>=14.0, <15`     | `edunext/tutor-mfe@15.0.7.post2`     | 15.x.x          |
+| Nutmeg           | `>=14.0, <15`     | `edunext/tutor-mfe@14.0.2.post1`     | 14.x.x          |
+| Olive           | `>=15.0, <16`     | `edunext/tutor-mfe@15.0.7.post2`     | 15.x.x          |
 
 ## Installation
 
@@ -46,6 +46,11 @@ custom fork hosted by eduNEXT. You might use your own fork, but you must include
 mentioned before.
 
 - Learning: [`eduNEXT/frontend-app-learning@ednx-release/olmo.master`](https://github.com/eduNEXT/frontend-app-learning/tree/ednx-release/olmo.master)
+- Profile: [`eduNEXT/frontend-app-profile@ednx-release/olmo.master`](https://github.com/eduNEXT/frontend-app-profile/tree/ednx-release/olmo.master)
+- Authn: [`eduNEXT/frontend-app-authn@ednx-release/olmo.master`](https://github.com/eduNEXT/frontend-app-authn/tree/ednx-release/olmo.master)
+- Account: [`eduNEXT/frontend-app-account@ednx-release/olmo.master`](https://github.com/eduNEXT/frontend-app-account/tree/ednx-release/olmo.master)
+- Discussions: [`eduNEXT/frontend-app-discussions@ednx-release/olmo.master`](https://github.com/eduNEXT/frontend-app-discussions/tree/ednx-release/olmo.master)
+- Gradebook: [`eduNEXT/frontend-app-gradebook@ednx-release/olmo.master`](https://github.com/eduNEXT/frontend-app-gradebook/tree/ednx-release/olmo.master)
 
 In addition, we need to use a custom version of `tutor-mfe` that includes the patch
 `mfe-dockerfile-production-final` introduced in [`overhangio/tutor-mfe#179`](https://github.com/overhangio/tutor-mfe/pull/179).
