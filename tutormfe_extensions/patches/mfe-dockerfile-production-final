@@ -1,0 +1,5 @@
+COPY --chmod=755 ./docker-entrypoint.sh /openedx
+
+ENTRYPOINT ["/openedx/docker-entrypoint.sh"]
+
+CMD [ "caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile" ]

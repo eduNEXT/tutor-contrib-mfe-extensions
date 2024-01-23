@@ -22,7 +22,6 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
         ("MFE_EXTENSIONS_VERSION", __version__),
         ("MFE_EXTENSIONS_CDN_URL", ""),
         ("MFE_EXTENSIONS_BY_PATH", True),
-        ("MFE_EXTENSIONS_NPM_OVERRIDES", True),
     ]
 )
 
@@ -42,7 +41,15 @@ hooks.Filters.CONFIG_OVERRIDES.add_items(
         # Danger zone!
         # Add values to override settings from Tutor core or other plugins here.
         # Each override is a pair: (setting_name, new_value). For example:
-        ### ("PLATFORM_NAME", "My platform"),
+        (
+            "MFE_LEARNING_MFE_APP",
+            {
+                "name": "learning",
+                "repository": "https://github.com/eduNEXT/frontend-app-learning",
+                "port": 2000,
+                "version": "ednx-release/olmo.master",
+            },
+        ),
     ]
 )
 
@@ -148,6 +155,7 @@ hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
     [
         ("mfe_extensions/apps", "plugins"),
         ("mfe_extensions/k8s", "plugins"),
+        ("mfe/build", "plugins"),
     ],
 )
 
