@@ -64,25 +64,9 @@ the MFE docker image if we set it's value to a specific CDN endpoint.
 To avoid this limitation we use a script
 [`docker-entrypoint.sh`](tutormfe_extensions/templates/mfe/build/mfe/docker-entrypoint.sh)
 to dinamically change a placeholder value used in `publicPath` each time the container is
-started.
+started. The plugin relies on a few Tutor patches that aren't available in Tutor v15 to do this,
+for that reason make sure you use the version specified in the Installation section.
 
-We need to make sure our image is built using the placeholder `MFE_EXTENSIONS_PLACEHOLDER_STRING/app_name` as our `publicPath` (where `app_name` refers to the value of `MFE_MYMFE_MFE_APP.name`). In Nutmeg you configure `PUBLIC_PATH` through the `config.yml` file:
-
-```yaml
-MFE_LEARNING_MFE_APP:
-  env:
-    production:
-      PUBLIC_PATH: MFE_EXTENSIONS_PLACEHOLDER_STRING/learning
-      MFE_CONFIG_API_URL: /api/mfe_config/v1
-      APP_ID: learning
-  name: learning
-  port: 2000
-  repository: https://github.com/eduNEXT/frontend-app-learning.git
-  version: ednx-release/olmo.master
-```
-
-The learning MFE in eduNEXT fork also has support for the [`MFE_CONFIG_API`](https://github.com/openedx/edx-platform/blob/master/lms/djangoapps/mfe_config_api/docs/decisions/0001-mfe-config-api.rst) in Nutmeg, you must also include the variables `MFE_CONFIG_API_URL` and `APP_ID` in your
-`config.yml` while building the MFE to enable the API.
 
 Once you enable the plugin and add the previous snippet to your configuration you can build
 an image with a _"dynamic"_ `publicPath`. By default the placeholder will be replaced by
