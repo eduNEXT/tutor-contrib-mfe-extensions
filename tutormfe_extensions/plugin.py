@@ -50,6 +50,51 @@ hooks.Filters.CONFIG_OVERRIDES.add_items(
                 "version": "ednx-release/olmo.master",
             },
         ),
+        (
+            "MFE_ACCOUNT_MFE_APP",
+            {
+                "name": "account",
+                "repository": "https://github.com/eduNEXT/frontend-app-account",
+                "port": 1997,
+                "version": "ednx-release/olmo.master",
+            },
+        ),
+        (
+            "MFE_AUTHN_MFE_APP",
+            {
+                "name": "authn",
+                "repository": "https://github.com/eduNEXT/frontend-app-authn",
+                "port": 1999,
+                "version": "ednx-release/olmo.master",
+            },
+        ),
+        (
+            "MFE_DISCUSSIONS_MFE_APP",
+            {
+                "name": "discussions",
+                "repository": "https://github.com/eduNEXT/frontend-app-discussions",
+                "port": 2002,
+                "version": "ednx-release/olmo.master",
+            },
+        ),
+        (
+            "MFE_GRADEBOOK_MFE_APP",
+            {
+                "name": "gradebook",
+                "repository": "https://github.com/eduNEXT/frontend-app-gradebook",
+                "port": 1994,
+                "version": "ednx-release/olmo.master",
+            },
+        ),
+        (
+            "MFE_PROFILE_MFE_APP",
+            {
+                "name": "profile",
+                "repository": "https://github.com/eduNEXT/frontend-app-profile",
+                "port": 1995,
+                "version": "ednx-release/olmo.master",
+            },
+        ),
     ]
 )
 
