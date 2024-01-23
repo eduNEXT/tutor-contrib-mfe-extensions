@@ -68,10 +68,9 @@ started. The plugin relies on a few Tutor patches that aren't available in Tutor
 for that reason make sure you use the version specified in the Installation section.
 
 
-Once you enable the plugin and add the previous snippet to your configuration you can build
-an image with a _"dynamic"_ `publicPath`. By default the placeholder will be replaced by
-an empty string, which was the original value. In a Kubernetes environment it will be
-replaced with the value of `MFE_EXTENSIONS_CDN_URL`.
+Once you enable the plugin you can build an image with a _"dynamic"_ `publicPath`.
+By default the placeholder will be replaced by an empty string, which was the original value.
+In a Kubernetes environment it will be replaced with the value of `MFE_EXTENSIONS_CDN_URL`.
 
 ## Hosting by Path
 
