@@ -95,6 +95,24 @@ hooks.Filters.CONFIG_OVERRIDES.add_items(
                 "version": "ednx-release/olmo.master",
             },
         ),
+        (
+            "MFE_ORA_GRADING_MFE_APP",
+            {
+                "name": "ora-grading",
+                "repository": "https://github.com/eduNEXT/frontend-app-ora-grading",
+                "port": 2003,
+                "version": "ednx-release/olmo.master",
+            },
+        ),
+        (
+            "MFE_COMMUNICATIONS_MFE_APP",
+            {
+                "name": "communications",
+                "repository": "https://github.com/eduNEXT/frontend-app-communications",
+                "port": 2004,
+                "version": "ednx-release/olmo.master",
+            },
+        ),
     ]
 )
 
