@@ -6,13 +6,39 @@ from glob import glob
 
 import click
 import pkg_resources
+from tutor import config as tutor_config
 from tutor import hooks
+from tutormfe.hooks import MFE_APPS
+
 
 from .__about__ import __version__
 
 ########################################
 # CONFIGURATION
 ########################################
+
+
+@MFE_APPS.add()
+def _remove_some_my_mfe(mfes):
+    config = tutor_config.load('.')
+    for setting in config:
+        if setting.startswith('MFE_') and setting.endswith('_MFE_APP') and config[setting] is None:
+            name = setting.replace('_MFE_APP', '').replace('MFE_', '').replace('_', '-').lower()
+            mfes.pop(name)
+    return mfes
+
+@MFE_APPS.add()
+def _add_my_mfe(mfes):
+    config = tutor_config.load('.')
+    for setting in config:
+        if setting.startswith('MFE_') and setting.endswith('_MFE_APP') and config[setting] is not None:
+            mfes[config[setting]["name"]] = {
+                "repository": config[setting]['repository'],
+                "port": config[setting]["port"],
+                "version": config[setting]["version"]
+            }
+
+    return mfes
 
 hooks.Filters.CONFIG_DEFAULTS.add_items(
     [
