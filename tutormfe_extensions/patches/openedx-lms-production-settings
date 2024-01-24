@@ -1,5 +1,6 @@
 {% if MFE_EXTENSIONS_BY_PATH %}
 LEARNING_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/learning"
+{% endif %}
 MFE_CONFIG["PARAGON_THEME_URLS"] = {
     "core": {
         "url": "https://cdn.jsdelivr.net/combine/npm/@edx/paragon@22.0.0-alpha.13/styles/css/themes/light/utility-classes.min.css,npm/@edx/paragon@22.0.0-alpha.13/dist/core.min.css"
@@ -13,4 +14,3 @@ MFE_CONFIG["PARAGON_THEME_URLS"] = {
         }
     }
 }
-{% endif %}
