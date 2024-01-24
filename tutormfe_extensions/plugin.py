@@ -22,7 +22,6 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
         ("MFE_EXTENSIONS_VERSION", __version__),
         ("MFE_EXTENSIONS_CDN_URL", ""),
         ("MFE_EXTENSIONS_BY_PATH", True),
-        ("MFE_EXTENSIONS_NPM_OVERRIDES", True),
     ]
 )
 
@@ -42,7 +41,78 @@ hooks.Filters.CONFIG_OVERRIDES.add_items(
         # Danger zone!
         # Add values to override settings from Tutor core or other plugins here.
         # Each override is a pair: (setting_name, new_value). For example:
-        ### ("PLATFORM_NAME", "My platform"),
+        (
+            "MFE_LEARNING_MFE_APP",
+            {
+                "name": "learning",
+                "repository": "https://github.com/eduNEXT/frontend-app-learning",
+                "port": 2000,
+                "version": "ednx-release/olmo.master",
+            },
+        ),
+        (
+            "MFE_ACCOUNT_MFE_APP",
+            {
+                "name": "account",
+                "repository": "https://github.com/eduNEXT/frontend-app-account",
+                "port": 1997,
+                "version": "ednx-release/olmo.master",
+            },
+        ),
+        (
+            "MFE_AUTHN_MFE_APP",
+            {
+                "name": "authn",
+                "repository": "https://github.com/eduNEXT/frontend-app-authn",
+                "port": 1999,
+                "version": "ednx-release/olmo.master",
+            },
+        ),
+        (
+            "MFE_DISCUSSIONS_MFE_APP",
+            {
+                "name": "discussions",
+                "repository": "https://github.com/eduNEXT/frontend-app-discussions",
+                "port": 2002,
+                "version": "ednx-release/olmo.master",
+            },
+        ),
+        (
+            "MFE_GRADEBOOK_MFE_APP",
+            {
+                "name": "gradebook",
+                "repository": "https://github.com/eduNEXT/frontend-app-gradebook",
+                "port": 1994,
+                "version": "ednx-release/olmo.master",
+            },
+        ),
+        (
+            "MFE_PROFILE_MFE_APP",
+            {
+                "name": "profile",
+                "repository": "https://github.com/eduNEXT/frontend-app-profile",
+                "port": 1995,
+                "version": "ednx-release/olmo.master",
+            },
+        ),
+        (
+            "MFE_ORA_GRADING_MFE_APP",
+            {
+                "name": "ora-grading",
+                "repository": "https://github.com/eduNEXT/frontend-app-ora-grading",
+                "port": 2003,
+                "version": "ednx-release/olmo.master",
+            },
+        ),
+        (
+            "MFE_COMMUNICATIONS_MFE_APP",
+            {
+                "name": "communications",
+                "repository": "https://github.com/eduNEXT/frontend-app-communications",
+                "port": 2004,
+                "version": "ednx-release/olmo.master",
+            },
+        ),
     ]
 )
 
@@ -148,6 +218,7 @@ hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
     [
         ("mfe_extensions/apps", "plugins"),
         ("mfe_extensions/k8s", "plugins"),
+        ("mfe/build", "plugins"),
     ],
 )
 

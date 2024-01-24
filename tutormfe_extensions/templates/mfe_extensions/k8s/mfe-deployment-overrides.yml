@@ -10,20 +10,3 @@ spec:
         - name: MFE_CDN_URL
           value: {{ MFE_EXTENSIONS_CDN_URL }}
         name: mfe
-        volumeMounts:
-        - mountPath: /openedx/bin/
-          name: entrypoint
-        command:
-          - /openedx/bin/docker-entrypoint.sh
-        args:
-          - caddy
-          - run
-          - --config
-          - /etc/caddy/Caddyfile
-          - --adapter
-          - caddyfile
-      volumes:
-      - configMap:
-          defaultMode: 484
-          name: mfeextensions-docker
-        name: entrypoint
