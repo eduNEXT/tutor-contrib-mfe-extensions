@@ -15,8 +15,8 @@ for MFEs.
 ## Installation
 
 ```bash
-pip install git+https://github.com/edunext/tutor-contrib-mfe-extensions@v15.0.0
-pip install git+https://github.com/edunext/tutor-mfe@v15.0.7.post2
+pip install git+https://github.com/edunext/tutor-contrib-mfe-extensions@v16.0.0
+pip install git+https://github.com/edunext/tutor-mfe@v16.1.3.post1
 ```
 
 ## Plugin Configuration
