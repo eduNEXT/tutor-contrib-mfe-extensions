@@ -7,7 +7,7 @@ from glob import glob
 import click
 import pkg_resources
 from tutor import config as tutor_config
-from tutor import hooks
+from tutor import hooks, fmt
 from tutormfe.hooks import MFE_APPS
 
 
@@ -19,13 +19,24 @@ from .__about__ import __version__
 
 
 @MFE_APPS.add()
-def _remove_some_my_mfe(mfes):
+def _set_and_remove_mfes_from_config_file(mfes):
+
     config = tutor_config.load('.')
-    for setting in config:
-        if setting.startswith('MFE_') and setting.endswith('_MFE_APP') and config[setting] is None:
-            name = setting.replace('_MFE_APP', '').replace('MFE_', '').replace('_', '-').lower()
-            mfes.pop(name)
+
+    for setting, value in config.items():
+        if setting.startswith('MFE_') and setting.endswith('_MFE_APP'):
+            if setting is None:
+                mfes.pop(value["name"])
+                continue
+
+            mfes[value["name"]] = {
+                "repository": value["repository"],
+                "port": value["port"],
+                "version": value["version"],
+            }
+
     return mfes
+
 
 @MFE_APPS.add()
 def _add_my_mfe(mfes):
