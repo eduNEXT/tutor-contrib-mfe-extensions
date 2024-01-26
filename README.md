@@ -78,8 +78,7 @@ In a Kubernetes environment it will be replaced with the value of `MFE_EXTENSION
 This plugin adds additional routes to caddy that allows you to serve any MFE defined
 by using the `MFE_APP_` variables through the LMS domain using the path:
 `https://{LMS_HOST}/{{MFE_CUSTOM_MFE_APP.name}}` where `name` corresponds to the
-name variable defined
-[on each MFE setting](https://github.com/overhangio/tutor-mfe/blob/v15.0.6/tutormfe/plugin.py#L18).
+key of each item in the [`CORE_MFE_APPS` dict](https://github.com/overhangio/tutor-mfe/blob/v16.1.3/tutormfe/plugin.py#L48).
 
 This is done by using the patch `{{ patch("caddyfile-mfe-by-path") }}` this patch will
 add a caddy snippet that will route `/{{MFE_CUSTOM_MFE_APP.name}}` to the MFE container,
