@@ -70,7 +70,7 @@ CORE_MFES_CONFIG = {
 
 
 @MFE_APPS.add()
-def _set_and_remove_mfes_from_config_file(mfes):
+def _manage_mfes_from_config(mfes):
 
     config = tutor_config.load('.')
 
@@ -87,20 +87,6 @@ def _set_and_remove_mfes_from_config_file(mfes):
             "port": value["port"],
             "version": value["version"],
         }
-
-    return mfes
-
-
-@MFE_APPS.add()
-def _add_my_mfe(mfes):
-    config = tutor_config.load('.')
-    for setting in config:
-        if setting.startswith('MFE_') and setting.endswith('_MFE_APP') and config[setting] is not None:
-            mfes[config[setting]["name"]] = {
-                "repository": config[setting]['repository'],
-                "port": config[setting]["port"],
-                "version": config[setting]["version"]
-            }
 
     return mfes
 
