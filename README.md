@@ -46,14 +46,14 @@ The following is a list of supported MFEs for the current plugin version, each M
 custom fork hosted by eduNEXT. You might use your own fork, but you must include the backport
 mentioned before.
 
-- Learning: [`eduNEXT/frontend-app-learning@ednx-release/olmo.master`](https://github.com/eduNEXT/frontend-app-learning/tree/ednx-release/olmo.master)
-- Profile: [`eduNEXT/frontend-app-profile@ednx-release/olmo.master`](https://github.com/eduNEXT/frontend-app-profile/tree/ednx-release/olmo.master)
-- Authn: [`eduNEXT/frontend-app-authn@ednx-release/olmo.master`](https://github.com/eduNEXT/frontend-app-authn/tree/ednx-release/olmo.master)
-- Account: [`eduNEXT/frontend-app-account@ednx-release/olmo.master`](https://github.com/eduNEXT/frontend-app-account/tree/ednx-release/olmo.master)
-- Discussions: [`eduNEXT/frontend-app-discussions@ednx-release/olmo.master`](https://github.com/eduNEXT/frontend-app-discussions/tree/ednx-release/olmo.master)
-- Gradebook: [`eduNEXT/frontend-app-gradebook@ednx-release/olmo.master`](https://github.com/eduNEXT/frontend-app-gradebook/tree/ednx-release/olmo.master)
-- Ora Grading: [`eduNEXT/frontend-app-ora-grading@ednx-release/olmo.master`](https://github.com/eduNEXT/frontend-app-ora-grading/tree/ednx-release/olmo.master)
-- Communications: [`eduNEXT/frontend-app-communications@ednx-release/olmo.master`](https://github.com/eduNEXT/frontend-app-communications/tree/ednx-release/olmo.master)
+- Learning: [`eduNEXT/frontend-app-learning@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-learning/tree/ednx-release/palma.master)
+- Profile: [`eduNEXT/frontend-app-profile@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-profile/tree/ednx-release/palma.master)
+- Authn: [`eduNEXT/frontend-app-authn@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-authn/tree/ednx-release/palma.master)
+- Account: [`eduNEXT/frontend-app-account@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-account/tree/ednx-release/palma.master)
+- Discussions: [`eduNEXT/frontend-app-discussions@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-discussions/tree/ednx-release/palma.master)
+- Gradebook: [`eduNEXT/frontend-app-gradebook@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-gradebook/tree/ednx-release/palma.master)
+- Ora Grading: [`eduNEXT/frontend-app-ora-grading@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-ora-grading/tree/ednx-release/palma.master)
+- Communications: [`eduNEXT/frontend-app-communications@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-communications/tree/ednx-release/palma.master)
 
 In addition, we need to use a custom version of `tutor-mfe` that includes the patch
 `mfe-dockerfile-production-final` introduced in [`overhangio/tutor-mfe#179`](https://github.com/overhangio/tutor-mfe/pull/179).
