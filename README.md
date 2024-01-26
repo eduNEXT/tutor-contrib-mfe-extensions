@@ -10,6 +10,7 @@ for MFEs.
 |------------------|-------------------|--------------------------------------|----------------|
 | Nutmeg           | `>=14.0, <15`     | `edunext/tutor-mfe@14.0.2.post1`     | 14.x.x          |
 | Olive           | `>=15.0, <16`     | `edunext/tutor-mfe@15.0.7.post2`     | 15.x.x          |
+| Palm            | `>=16.0, <17`     | `edunext/tutor-mfe@16.1.3.post1`     | 16.x.x          |
 
 ## Installation
 
