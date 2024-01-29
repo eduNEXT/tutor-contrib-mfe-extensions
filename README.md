@@ -11,6 +11,7 @@ for MFEs.
 | Nutmeg           | `>=14.0, <15`     | `edunext/tutor-mfe@14.0.2.post1`     | 14.x.x          |
 | Olive           | `>=15.0, <16`     | `edunext/tutor-mfe@15.0.7.post2`     | 15.x.x          |
 | Palm            | `>=16.0, <17`     | `edunext/tutor-mfe@16.1.3.post1`     | 16.x.x          |
+| Quince            | `>=17.0, <18`     | `openedx/tutor-mfe@master`     | 17.x.x          |
 
 ## Installation
 
@@ -46,16 +47,16 @@ The following is a list of supported MFEs for the current plugin version, each M
 custom fork hosted by eduNEXT. You might use your own fork, but you must include the backport
 mentioned before.
 
-- Learning: [`eduNEXT/frontend-app-learning@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-learning/tree/ednx-release/palma.master)
-- Profile: [`eduNEXT/frontend-app-profile@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-profile/tree/ednx-release/palma.master)
-- Authn: [`eduNEXT/frontend-app-authn@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-authn/tree/ednx-release/palma.master)
-- Account: [`eduNEXT/frontend-app-account@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-account/tree/ednx-release/palma.master)
-- Discussions: [`eduNEXT/frontend-app-discussions@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-discussions/tree/ednx-release/palma.master)
-- Gradebook: [`eduNEXT/frontend-app-gradebook@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-gradebook/tree/ednx-release/palma.master)
-- Ora Grading: [`eduNEXT/frontend-app-ora-grading@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-ora-grading/tree/ednx-release/palma.master)
-- Communications: [`eduNEXT/frontend-app-communications@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-communications/tree/ednx-release/palma.master)
+- Learning: [`openedx/frontend-app-learning@open-release/quince.1`](https://github.com/openedx/frontend-app-learning/tree/open-release/quince.1)
+- Profile: [`openedx/frontend-app-profile@open-release/quince.1`](https://github.com/openedx/frontend-app-profile/tree/open-release/quince.1)
+- Authn: [`openedx/frontend-app-authn@open-release/quince.1`](https://github.com/openedx/frontend-app-authn/tree/open-release/quince.1)
+- Account: [`openedx/frontend-app-account@open-release/quince.1`](https://github.com/openedx/frontend-app-account/tree/open-release/quince.1)
+- Discussions: [`openedx/frontend-app-discussions@open-release/quince.1`](https://github.com/openedx/frontend-app-discussions/tree/open-release/quince.1)
+- Gradebook: [`openedx/frontend-app-gradebook@open-release/quince.1`](https://github.com/openedx/frontend-app-gradebook/tree/open-release/quince.1)
+- Ora Grading: [`openedx/frontend-app-ora-grading@open-release/quince.1`](https://github.com/openedx/frontend-app-ora-grading/tree/open-release/quince.1)
+- Communications: [`openedx/frontend-app-communications@open-release/quince.1`](https://github.com/openedx/frontend-app-communications/tree/open-release/quince.1)
 
-In addition, we need to use a custom version of `tutor-mfe` that includes the patch
+In addition, we need to use `tutor-mfe` version that includes the patch
 `mfe-dockerfile-production-final` introduced in [`overhangio/tutor-mfe#179`](https://github.com/overhangio/tutor-mfe/pull/179).
 
 ### Building Caveats
