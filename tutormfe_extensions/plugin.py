@@ -5,7 +5,7 @@ import os.path
 from glob import glob
 
 import click
-import pkg_resources
+import importlib_resources
 from tutor import config as tutor_config
 from tutor import hooks
 from tutormfe.hooks import MFE_APPS
@@ -17,56 +17,8 @@ from .__about__ import __version__
 # CONFIGURATION
 ########################################
 
-CORE_MFES_CONFIG = {
-    "MFE_LEARNING_MFE_APP": {
-        "name": "learning",
-        "repository": "https://github.com/eduNEXT/frontend-app-learning",
-        "port": 2000,
-        "version": "ednx-release/palma.master",
-    },
-    "MFE_ACCOUNT_MFE_APP": {
-        "name": "account",
-        "repository": "https://github.com/eduNEXT/frontend-app-account",
-        "port": 1997,
-        "version": "ednx-release/palma.master",
-    },
-    "MFE_AUTHN_MFE_APP": {
-        "name": "authn",
-        "repository": "https://github.com/eduNEXT/frontend-app-authn",
-        "port": 1999,
-        "version": "ednx-release/palma.master",
-    },
-    "MFE_DISCUSSIONS_MFE_APP": {
-        "name": "discussions",
-        "repository": "https://github.com/eduNEXT/frontend-app-discussions",
-        "port": 2002,
-        "version": "ednx-release/palma.master",
-    },
-    "MFE_GRADEBOOK_MFE_APP": {
-        "name": "gradebook",
-        "repository": "https://github.com/eduNEXT/frontend-app-gradebook",
-        "port": 1994,
-        "version": "ednx-release/palma.master",
-    },
-    "MFE_PROFILE_MFE_APP": {
-        "name": "profile",
-        "repository": "https://github.com/eduNEXT/frontend-app-profile",
-        "port": 1995,
-        "version": "ednx-release/palma.master",
-    },
-    "MFE_ORA_GRADING_MFE_APP": {
-        "name": "ora-grading",
-        "repository": "https://github.com/eduNEXT/frontend-app-ora-grading",
-        "port": 2003,
-        "version": "ednx-release/palma.master",
-    },
-    "MFE_COMMUNICATIONS_MFE_APP": {
-        "name": "communications",
-        "repository": "https://github.com/eduNEXT/frontend-app-communications",
-        "port": 2004,
-        "version": "ednx-release/palma.master",
-    }
-}
+CORE_MFES_CONFIG = {}
+
 
 def validate_mfe_config(mfe_setting_name: str):
     if mfe_setting_name.startswith("MFE_") and mfe_setting_name.endswith("_MFE_APP"):
@@ -153,8 +105,9 @@ MY_INIT_TASKS: list[tuple[str, tuple[str, ...]]] = [
 # and add it to the CLI_DO_INIT_TASKS filter, which tells Tutor to
 # run it as part of the `init` job.
 for service, template_path in MY_INIT_TASKS:
-    full_path: str = pkg_resources.resource_filename(
-        "tutormfe_extensions", os.path.join("templates", *template_path)
+    full_path: str = str(
+        importlib_resources.files("tutormfe_extensions")
+        / os.path.join("templates", *template_path)
     )
     with open(full_path, encoding="utf-8") as init_task_file:
         init_task: str = init_task_file.read()
@@ -221,7 +174,7 @@ hooks.Filters.IMAGES_PUSH.add_items(
 hooks.Filters.ENV_TEMPLATE_ROOTS.add_items(
     # Root paths for template files, relative to the project root.
     [
-        pkg_resources.resource_filename("tutormfe_extensions", "templates"),
+        str(importlib_resources.files("tutormfe_extensions") / "templates"),
     ]
 )
 
@@ -249,7 +202,7 @@ hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
 # apply a patch based on the file's name and contents.
 for path in glob(
     os.path.join(
-        pkg_resources.resource_filename("tutormfe_extensions", "patches"),
+        str(importlib_resources.files("tutormfe_extensions") / "patches"),
         "*",
     )
 ):

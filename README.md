@@ -8,9 +8,10 @@ for MFEs.
 
 | Open edX release | Tutor version     | Tutor MFE Version                    | Plugin release |
 |------------------|-------------------|--------------------------------------|----------------|
-| Nutmeg           | `>=14.0, <15`     | `edunext/tutor-mfe@14.0.2.post1`     | 14.x.x          |
-| Olive           | `>=15.0, <16`     | `edunext/tutor-mfe@15.0.7.post2`     | 15.x.x          |
-| Palm            | `>=16.0, <17`     | `edunext/tutor-mfe@16.1.3.post1`     | 16.x.x          |
+| Nutmeg           | `>=14.0, <15`     | `edunext/tutor-mfe@14.0.2.post1`     | 14.x.x         |
+| Olive            | `>=15.0, <16`     | `edunext/tutor-mfe@15.0.7.post2`     | 15.x.x         |
+| Palm             | `>=16.0, <17`     | `edunext/tutor-mfe@16.1.3.post1`     | 16.x.x         |
+| Quince           | `>=17.0, <18`     | `openedx/tutor-mfe@v17.0.1`          | 17.x.x         |
 
 ## Installation
 
@@ -37,26 +38,10 @@ bundles of each MFE and simply serve a small index.html file through caddy.
 
 We use webpack's
 [`output.publicPath`](https://webpack.js.org/configuration/output/#outputpublicpath)
-to accomplish this. Due to current limitations in the building scripts
-we need to use custom versions of `frontend-platform` that include a backport of
-[`openedx/frontend-platform#568`](https://github.com/openedx/frontend-platform/pull/568)
-for releases previous to Quince.
-
-The following is a list of supported MFEs for the current plugin version, each MFE is a
-custom fork hosted by eduNEXT. You might use your own fork, but you must include the backport
-mentioned before.
-
-- Learning: [`eduNEXT/frontend-app-learning@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-learning/tree/ednx-release/palma.master)
-- Profile: [`eduNEXT/frontend-app-profile@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-profile/tree/ednx-release/palma.master)
-- Authn: [`eduNEXT/frontend-app-authn@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-authn/tree/ednx-release/palma.master)
-- Account: [`eduNEXT/frontend-app-account@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-account/tree/ednx-release/palma.master)
-- Discussions: [`eduNEXT/frontend-app-discussions@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-discussions/tree/ednx-release/palma.master)
-- Gradebook: [`eduNEXT/frontend-app-gradebook@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-gradebook/tree/ednx-release/palma.master)
-- Ora Grading: [`eduNEXT/frontend-app-ora-grading@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-ora-grading/tree/ednx-release/palma.master)
-- Communications: [`eduNEXT/frontend-app-communications@ednx-release/palma.master`](https://github.com/eduNEXT/frontend-app-communications/tree/ednx-release/palma.master)
-
-In addition, we need to use a custom version of `tutor-mfe` that includes the patch
-`mfe-dockerfile-production-final` introduced in [`overhangio/tutor-mfe#179`](https://github.com/overhangio/tutor-mfe/pull/179).
+to accomplish this. An important fix to make use of this was merged in fronted-platform
+[v5.5.1](https://github.com/openedx/frontend-platform/releases/tag/v5.5.1), so
+it's a prerequisite that your MFEs come with this version installed. This is the
+case for all the MFEs supported by default by Tutor from Quince on-wards.
 
 ### Building Caveats
 
@@ -65,9 +50,7 @@ the MFE docker image if we set it's value to a specific CDN endpoint.
 To avoid this limitation we use a script
 [`docker-entrypoint.sh`](tutormfe_extensions/templates/mfe/build/mfe/docker-entrypoint.sh)
 to dinamically change a placeholder value used in `publicPath` each time the container is
-started. The plugin relies on a few Tutor patches that aren't available in Tutor v15 to do this,
-for that reason make sure you use the version specified in the Installation section.
-
+started.
 
 Once you enable the plugin you can build an image with a _"dynamic"_ `publicPath`.
 By default the placeholder will be replaced by an empty string, which was the original value.
