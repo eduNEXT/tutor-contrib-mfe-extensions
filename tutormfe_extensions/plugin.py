@@ -3,11 +3,13 @@ from __future__ import annotations
 import os
 import os.path
 from glob import glob
+from typing import Iterable
 
 import importlib_resources
 from tutor import config as tutor_config
 from tutor import hooks
 from tutormfe.hooks import MFE_APPS
+from tutormfe.plugin import CORE_MFE_APPS
 
 
 from .__about__ import __version__
@@ -66,6 +68,23 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
 )
 
 
+def iter_mfes_per_service(service: str = "") -> Iterable[str]:
+    """
+    Return the list of MFEs that should be hosted via path in the
+    same domain as each service.
+
+    """
+    active_mfes = MFE_APPS.apply({})
+    cms_mfes = {"course-authoring"}
+    lms_mfes = set(CORE_MFE_APPS) - cms_mfes
+
+    for mfe in active_mfes:
+        if service == "lms" and mfe in lms_mfes:
+            yield mfe
+        if service == "cms" and mfe in cms_mfes:
+            yield mfe
+
+
 ########################################
 # TEMPLATE RENDERING
 # (It is safe & recommended to leave
@@ -92,6 +111,12 @@ hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
     ],
 )
 
+# Make the mfe_extensions functions available within templates
+hooks.Filters.ENV_TEMPLATE_VARIABLES.add_items(
+    [
+        ("iter_mfes_per_service", iter_mfes_per_service),
+    ],
+)
 
 ########################################
 # PATCH LOADING

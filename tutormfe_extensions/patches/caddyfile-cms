@@ -1,0 +1,16 @@
+{%- if MFE_EXTENSIONS_BY_PATH %}
+reverse_proxy /api/mfe_config/v1* lms:8000 {
+    header_up Host {{ LMS_HOST }}
+}
+{%- for app_name in iter_mfes_per_service("cms") %}
+@mfe_{{ app_name }} {
+    path /{{ app_name }} /{{ app_name }}/*
+}
+handle @mfe_{{ app_name }} {
+    redir /{{ app_name }} /{{ app_name }}/
+    reverse_proxy mfe:8002 {
+        header_up Host {host}
+    }
+}
+{%- endfor %}
+{%- endif %}

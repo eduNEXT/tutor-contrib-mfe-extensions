@@ -1,9 +1,9 @@
 {%- if MFE_EXTENSIONS_BY_PATH %}
-{% for app_name, app in iter_mfes() %}
+{%- for app_name in iter_mfes_per_service("lms") %}
 route /{{app_name}}/* {
     reverse_proxy mfe:8002 {
         header_up Host {host}
     }
 }
-{% endfor %}
+{%- endfor %}
 {%- endif %}
