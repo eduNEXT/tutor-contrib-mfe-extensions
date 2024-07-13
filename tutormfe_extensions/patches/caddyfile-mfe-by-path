@@ -1,6 +1,18 @@
 {%- if MFE_EXTENSIONS_BY_PATH %}
 {%- for app_name in iter_mfes_per_service("lms") %}
-route /{{app_name}}/* {
+@mfe_{{ app_name }} {
+    path /{{ app_name }} /{{ app_name }}/*
+}
+handle @mfe_{{ app_name }} {
+    redir /{{ app_name }} /{{ app_name }}/
+    {%- if app_name == "account" %}
+    handle /account/settings {
+        reverse_proxy lms:8000
+    }
+    handle /account/password {
+        reverse_proxy lms:8000
+    }
+    {%- endif %}
     reverse_proxy mfe:8002 {
         header_up Host {host}
     }
