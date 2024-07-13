@@ -1,16 +1,46 @@
 {% if MFE_EXTENSIONS_BY_PATH %}
 LEARNING_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/learning"
+MFE_CONFIG["LEARNING_BASE_URL"] = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/learning"
+
+{%- if get_mfe("authn") %}
+AUTHN_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/authn"
+AUTHN_MICROFRONTEND_DOMAIN  = "{{ LMS_HOST }}/authn"
+{%- endif %}
+
+{% if get_mfe("account") %}
+ACCOUNT_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/account/"
+MFE_CONFIG["ACCOUNT_SETTINGS_URL"] = ACCOUNT_MICROFRONTEND_URL
+{%- endif %}
+
+{% if get_mfe("discussions") %}
+DISCUSSIONS_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/discussions"
+MFE_CONFIG["DISCUSSIONS_MFE_BASE_URL"] = DISCUSSIONS_MICROFRONTEND_URL
 {% endif %}
-MFE_CONFIG["PARAGON_THEME_URLS"] = {
-    "core": {
-        "url": "https://cdn.jsdelivr.net/combine/npm/@edx/paragon@22.0.0-alpha.13/styles/css/themes/light/utility-classes.min.css,npm/@edx/paragon@22.0.0-alpha.13/dist/core.min.css"
-    },
-    "defaults": {
-        "light": "light"
-    },
-    "variants": {
-        "light": {
-            "url": "https://css-varsify.s3.amazonaws.com/public/a9959998-0bab-4447-ada5-6819866195f3.css"
-        }
-    }
-}
+
+{% if get_mfe("gradebook") %}
+WRITABLE_GRADEBOOK_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/gradebook"
+{% endif %}
+
+{% if get_mfe("learner-dashboard") %}
+LEARNER_HOME_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/learner-dashboard/"
+{% endif %}
+
+{% if get_mfe("ora-grading") %}
+ORA_GRADING_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/ora-grading"
+{% endif %}
+
+{% if get_mfe("profile") %}
+PROFILE_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/profile/u/"
+MFE_CONFIG["ACCOUNT_PROFILE_URL"] = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/profile"
+{% endif %}
+
+{% if get_mfe("communications") %}
+COMMUNICATIONS_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/communications"
+{% endif %}
+
+{% if get_mfe("course-authoring") %}
+MFE_CONFIG["COURSE_AUTHORING_MICROFRONTEND_URL"] = "{% if ENABLE_HTTPS %}https://{% else %}http://{% endif %}{{ LMS_HOST }}/course-authoring"
+{% endif %}
+
+CORS_ORIGIN_WHITELIST.append("{% if ENABLE_HTTPS %}https://{% else %}http://{% endif %}{{ CMS_HOST }}")
+{% endif %}
