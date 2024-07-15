@@ -12,12 +12,12 @@ for MFEs.
 | Olive            | `>=15.0, <16`     | `edunext/tutor-mfe@15.0.7.post2`     | 15.x.x         |
 | Palm             | `>=16.0, <17`     | `edunext/tutor-mfe@16.1.3.post1`     | 16.x.x         |
 | Quince           | `>=17.0, <18`     | `openedx/tutor-mfe@v17.0.1`          | 17.x.x         |
+| Redwood          | `>=18.0, <19`     | `tutor-mfe>17`                       | 18.x.x         |
 
 ## Installation
 
 ```bash
-pip install git+https://github.com/edunext/tutor-contrib-mfe-extensions@v16.0.0
-pip install git+https://github.com/edunext/tutor-mfe@v16.1.3.post1
+pip install git+https://github.com/edunext/tutor-contrib-mfe-extensions@v18.0.0
 ```
 
 ## Plugin Configuration

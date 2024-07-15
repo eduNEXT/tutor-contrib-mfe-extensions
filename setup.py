@@ -39,7 +39,7 @@ setup(
     packages=find_packages(exclude=["tests*"]),
     include_package_data=True,
     python_requires=">=3.8",
-    install_requires=["tutor>=17.0.2", "tutor-mfe>=17.0.1"],
+    install_requires=["tutor>=18.0.0", "tutor-mfe>=18.0.0"],
     entry_points={
         "tutor.plugin.v1": [
             "mfe_extensions = tutormfe_extensions.plugin"
