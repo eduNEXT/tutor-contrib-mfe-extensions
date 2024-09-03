@@ -37,13 +37,13 @@ dev = [
 [project.urls]
 Homepage = "https://github.com/edunext/tutor-contrib-mfe-extensions"
 Code = "https://github.com/edunext/tutor-contrib-mfe-extensions"
-Issue tracker = "https://github.com/edunext/tutor-contrib-mfe-extensions/issues"
+"Issue tracker" = "https://github.com/edunext/tutor-contrib-mfe-extensions/issues"
 
 [project.entry-points."tutor.plugin.v1"]
 mfe_extensions = "tutormfe_extensions.plugin"
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["."]
 exclude = ["tests*"]
 
 [tool.setuptools.dynamic]
