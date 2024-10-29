@@ -7,7 +7,7 @@ name = "tutor-contrib-mfe-extensions"
 dynamic = ["version"]
 description = "mfe_extensions plugin for Tutor"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 license = { file = "LICENSE" }
 authors = [
     { name = "Moisés González" }
@@ -18,19 +18,19 @@ classifiers = [
     "License :: OSI Approved :: GNU Affero General Public License v3",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
 ]
 dependencies = [
-    "tutor>=18.0.0",
-    "tutor-mfe>=18.0.0",
+    "tutor>=19.0.0",
+    "tutor-mfe>=19.0.0",
 ]
 
 [project.optional-dependencies]
 dev = [
+    "build",
     "python-semantic-release",
 ]
 
