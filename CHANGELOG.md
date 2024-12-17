@@ -1,7 +1,20 @@
 # CHANGELOG
 
 
+## v19.0.0 (2024-12-17)
+
+### Features
+
+- Empty commit to trigger a version bump
+  ([`5ae11a7`](https://github.com/eduNEXT/tutor-contrib-mfe-extensions/commit/5ae11a70a2b7594f7f0c5b300da28b670fd504f6))
+
+
 ## v18.1.0 (2024-12-17)
+
+### Chores
+
+- **release**: Preparing 18.1.0
+  ([`f91f939`](https://github.com/eduNEXT/tutor-contrib-mfe-extensions/commit/f91f939bbd1fa047f47d1851d7e17e6824fa2c5a))
 
 ### Features
 
