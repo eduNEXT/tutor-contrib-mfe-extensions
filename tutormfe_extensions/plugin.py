@@ -75,7 +75,7 @@ def iter_mfes_per_service(service: str = "") -> Iterable[str]:
 
     """
     active_mfes = MFE_APPS.apply({})
-    cms_mfes = {"course-authoring"}
+    cms_mfes = {"authoring"}
     lms_mfes = set(CORE_MFE_APPS) - cms_mfes
 
     for mfe in active_mfes:

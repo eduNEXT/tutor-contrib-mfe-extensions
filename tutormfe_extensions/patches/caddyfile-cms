@@ -3,6 +3,10 @@ reverse_proxy /api/mfe_config/v1* lms:8000 {
     header_up Host {{ LMS_HOST }}
 }
 {%- for app_name in iter_mfes_per_service("cms") %}
+{%- if app_name == "authoring" %}
+@authoring path_regexp authoring /course-authoring/(.*)
+redir @authoring /authoring/{re.authoring.1} permanent
+{%- endif %}
 @mfe_{{ app_name }} {
     path /{{ app_name }} /{{ app_name }}/*
 }
