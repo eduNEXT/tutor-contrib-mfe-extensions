@@ -31,6 +31,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
+    "build",
     "python-semantic-release",
 ]
 
@@ -58,8 +59,8 @@ version_variables = [
     "tutormfe_extensions/__about__.py:__version__",
 ]
 
-[tool.semantic_release.branches.main]
-match = "(main|master)"
+[tool.semantic_release.branches.redwood]
+match = "redwood"
 
 [tool.semantic_release.changelog.environment]
 keep_trailing_newline = true
