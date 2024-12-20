@@ -1,7 +1,21 @@
 # CHANGELOG
 
 
+## v19.0.1 (2024-12-20)
+
+### Bug Fixes
+
+- Adding the finish_auth legacy account page to the caddyfile
+  ([#15](https://github.com/eduNEXT/tutor-contrib-mfe-extensions/pull/15),
+  [`4fff01a`](https://github.com/eduNEXT/tutor-contrib-mfe-extensions/commit/4fff01a3a40cb8bdab44413ffdabac0d9dbc8c37))
+
+
 ## v19.0.0 (2024-12-17)
+
+### Chores
+
+- **release**: Preparing 19.0.0
+  ([`18af9e0`](https://github.com/eduNEXT/tutor-contrib-mfe-extensions/commit/18af9e0662165a9d0606e3637a2eaca2a9109a37))
 
 ### Features
 
