@@ -12,6 +12,9 @@ handle @mfe_{{ app_name }} {
     handle /account/password {
         reverse_proxy lms:8000
     }
+    handle /account/finish_auth {
+        reverse_proxy lms:8000
+    }
     {%- endif %}
     reverse_proxy mfe:8002 {
         header_up Host {host}
