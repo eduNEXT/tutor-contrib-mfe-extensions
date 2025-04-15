@@ -6,7 +6,7 @@ from glob import glob
 from typing import Iterable
 
 import importlib_resources
-from tutor import config as tutor_config
+from tutor.types import Config
 from tutor import hooks
 from tutormfe.hooks import MFE_APPS
 from tutormfe.plugin import CORE_MFE_APPS
@@ -32,28 +32,29 @@ def validate_mfe_config(mfe_setting_name: str):
     return None
 
 
-@MFE_APPS.add()
-def _manage_mfes_from_config(mfe_list):
-    config = tutor_config.load(".")
-    for setting, value in config.items():
-        mfe_name = validate_mfe_config(setting)
-        if not mfe_name:
-            continue
+@hooks.Actions.CONFIG_LOADED.add()
+def load_config(config: Config):
+    @MFE_APPS.add()
+    def _manage_mfes_from_config(mfe_list):
+        for setting, value in config.items():
+            mfe_name = validate_mfe_config(setting)
+            if not mfe_name:
+                continue
 
-        if value is None:
-            mfe_list.pop(mfe_name)
-            continue
+            if value is None:
+                mfe_list.pop(mfe_name)
+                continue
 
-        mfe_defaults = CORE_MFES_CONFIG.get(setting, {})
-        mfe_defaults.update(value)
+            mfe_defaults = CORE_MFES_CONFIG.get(setting, {})
+            mfe_defaults.update(value)
 
-        mfe_list[mfe_defaults["name"]] = {
-            "repository": mfe_defaults["repository"],
-            "port": mfe_defaults["port"],
-            "version": mfe_defaults["version"],
-        }
+            mfe_list[mfe_defaults["name"]] = {
+                "repository": mfe_defaults["repository"],
+                "port": mfe_defaults["port"],
+                "version": mfe_defaults["version"],
+            }
 
-    return mfe_list
+        return mfe_list
 
 
 hooks.Filters.CONFIG_DEFAULTS.add_items(
