@@ -24,8 +24,8 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 dependencies = [
-    "tutor>=19.0.0",
-    "tutor-mfe>=19.0.0",
+    "tutor~=20.0",
+    "tutor-mfe~=20.0",
 ]
 
 [project.optional-dependencies]
@@ -40,7 +40,7 @@ Code = "https://github.com/edunext/tutor-contrib-mfe-extensions"
 "Issue tracker" = "https://github.com/edunext/tutor-contrib-mfe-extensions/issues"
 
 [project.entry-points."tutor.plugin.v1"]
-mfe_extensions = "tutormfe_extensions.plugin"
+mfe-extensions = "tutormfe_extensions.plugin"
 
 [tool.setuptools.packages.find]
 where = ["."]
