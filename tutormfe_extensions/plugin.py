@@ -2,15 +2,14 @@ from __future__ import annotations
 
 import os
 import os.path
+from collections.abc import Iterable
 from glob import glob
-from typing import Iterable
 
 import importlib_resources
-from tutor.types import Config
 from tutor import hooks
+from tutor.types import Config
 from tutormfe.hooks import MFE_APPS
 from tutormfe.plugin import CORE_MFE_APPS
-
 
 from .__about__ import __version__
 
@@ -23,12 +22,7 @@ CORE_MFES_CONFIG = {}
 
 def validate_mfe_config(mfe_setting_name: str):
     if mfe_setting_name.startswith("MFE_") and mfe_setting_name.endswith("_MFE_APP"):
-        return (
-            mfe_setting_name.replace("_MFE_APP", "")
-            .replace("MFE_", "")
-            .replace("_", "-")
-            .lower()
-        )
+        return mfe_setting_name.replace("_MFE_APP", "").replace("MFE_", "").replace("_", "-").lower()
     return None
 
 
