@@ -13,6 +13,18 @@ See the fragment files in the [changelog.d/ directory](./changelog.d).
 
 <!-- scriv-insert-here -->
 
+<a id='changelog-21.0.0'></a>
+## 21.0.0 — 2026-01-29
+
+### Added
+
+- Support for the Ulmo release.
+
+### Changed
+
+- Move the overrides to the MFE k8s resource to the more standard `k8s-override`
+  patch.
+
 <a id='changelog-20.1.1'></a>
 ## 20.1.1 — 2026-01-27
 

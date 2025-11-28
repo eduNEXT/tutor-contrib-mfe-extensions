@@ -1,8 +1,8 @@
-# Experimental MFE extensions plugin for Tutor
+# MFE extensions plugin for Tutor
 
-This plugin is meant to be a collection of experimental changes to the
-tutor-mfe configuration. At the moment, it will be the testing ground for CDN support
-for MFEs.
+This plugin enhances the default MFE feature set with additional support CDN
+caching and hosting MFEs in paths instead of a dedicated subdomain.
+
 
 ## Compatibility Table
 
