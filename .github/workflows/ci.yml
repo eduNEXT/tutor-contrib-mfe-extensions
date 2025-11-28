@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+env:
+  UV_VERSION: 0.9.13
+
+jobs:
+  tests:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12", "3.13"]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          version: ${{ env.UV_VERSION }}
+          python-version: ""
+
+      - name: Run quality checks
+        run: make quality
+
+      - name: Validate package build
+        run: uv build
+
+  release:
+    name: Build and publish package
+    needs: tests
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          version: ${{ env.UV_VERSION }}
+
+      - name: Create Release
+        run: |
+          VERSION=$(uv version --short)
+          uv run scriv print --version $VERSION --output release-body
+
+          echo gh release create "v${VERSION}" \
+            --title  ${VERSION} \
+            --target "${{ github.sha }}" \
+            --prerelease \
+            --notes-file release-body
+
