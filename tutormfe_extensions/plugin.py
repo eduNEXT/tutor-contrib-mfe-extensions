@@ -13,10 +13,6 @@ from tutormfe.plugin import CORE_MFE_APPS
 
 from .__about__ import __version__
 
-########################################
-# CONFIGURATION
-########################################
-
 CORE_MFES_CONFIG = {}
 
 
@@ -80,14 +76,7 @@ def iter_mfes_per_service(service: str = "") -> Iterable[str]:
             yield mfe
 
 
-########################################
-# TEMPLATE RENDERING
-# (It is safe & recommended to leave
-#  this section as-is :)
-########################################
-
 hooks.Filters.ENV_TEMPLATE_ROOTS.add_items(
-    # Root paths for template files, relative to the project root.
     [
         str(importlib_resources.files("tutormfe_extensions") / "templates"),
     ]
@@ -113,19 +102,6 @@ hooks.Filters.ENV_TEMPLATE_VARIABLES.add_items(
     ],
 )
 
-########################################
-# PATCH LOADING
-# (It is safe & recommended to leave
-#  this section as-is :)
-########################################
-
-# For each file in tutormfe_extensions/patches,
-# apply a patch based on the file's name and contents.
-for path in glob(
-    os.path.join(
-        str(importlib_resources.files("tutormfe_extensions") / "patches"),
-        "*",
-    )
-):
+for path in glob(str(importlib_resources.files("tutormfe_extensions") / "patches" / "*")):
     with open(path, encoding="utf-8") as patch_file:
         hooks.Filters.ENV_PATCHES.add_item((os.path.basename(path), patch_file.read()))

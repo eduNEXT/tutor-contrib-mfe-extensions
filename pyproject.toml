@@ -3,18 +3,17 @@ name = "tutor-contrib-mfe-extensions"
 version = "20.0.0"
 description = "mfe_extensions plugin for Tutor"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 license = "AGPL-3.0-only"
 authors = [
     { name = "Moisés González" }
 ]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: GNU Affero General Public License v3",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
@@ -68,4 +67,5 @@ build-backend = "uv_build"
 dev = [
     "ruff>=0.14.6",
     "scriv>=1.7.0",
+    "ty>=0.0.1a29",
 ]

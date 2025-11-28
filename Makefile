@@ -4,6 +4,7 @@
 quality: ## Run linters
 	uv run ruff check
 	uv run ruff format --diff
+	uv run ty   check
 
 quality-fix: ## Run automatic linter fixes
 	uv run ruff format
@@ -14,17 +15,6 @@ changelog-entry: ## Run scriv to create a changelog entry
 
 changelog-collect: ## Collect all the changelog entries and rebuild CHANGELOG.md
 	uv run scriv collect
-
-release: ## release a new version
-	@echo "Releasing a new version."
-	@echo "This is a remote release, it will push to the remote repository."
-	semantic-release --strict version --changelog --push --tag --commit
-
-local-release:
-	@echo "Releasing a new version."
-	@echo "This is a local release, it will not push to the remote repository."
-	@echo "You can push the changes and release manually."
-	semantic-release version --changelog --commit --no-push
 
 ESCAPE = 
 help: ## Print this help
