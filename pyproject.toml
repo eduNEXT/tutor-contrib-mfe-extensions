@@ -58,6 +58,13 @@ entry_title_template = "file: changelog.d/scriv/entry_title.md.j2"
 module-root = "."
 module-name = "tutormfe_extensions"
 
+# TODO: Delete before merging
+[tool.uv]
+override-dependencies = [
+    "tutor @ git+https://github.com/overhangio/tutor@ulmo",
+    "tutor-mfe @ git+https://github.com/overhangio/tutor-mfe@ulmo",
+]
+
 [build-system]
 requires = ["uv_build>=0.9.5,<0.10.0"]
 build-backend = "uv_build"
