@@ -79,4 +79,5 @@ jobs:
       - name: Publish to PyPI
         run: |
           uv publish \
-              --trusted-publishing always
+              --trusted-publishing always \
+              dist/*
