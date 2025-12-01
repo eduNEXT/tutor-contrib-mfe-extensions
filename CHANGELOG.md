@@ -1,5 +1,30 @@
 # CHANGELOG
 
+<!--
+All enhancements and changes will be documented in this file.  It adheres to
+the structure of http://keepachangelog.com/ ,
+
+This project adheres to Semantic Versioning (http://semver.org/).
+-->
+
+## Unreleased
+
+See the fragment files in the [changelog.d/ directory](./changelog.d).
+
+<!-- scriv-insert-here -->
+
+<a id='changelog-20.0.0'></a>
+## v20.0.0 (2025-07-02)
+
+### Added
+
+- Support for the Teak release.
+
+### Changed
+
+- The entrypoint was renamed from 'mfe_extensions' to 'mfe-extensions'. This is
+  a breaking change that requires updating the name of the plugin in the
+  config.yml file
 
 ## v19.0.1 (2024-12-20)
 
