@@ -1,0 +1,1 @@
+STATIC_URL = "{{ MFE_EXTENSIONS_CDN_URL }}/static/"
