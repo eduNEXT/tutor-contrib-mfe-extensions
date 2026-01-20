@@ -1,0 +1,13 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mfe
+spec:
+  template:
+    spec:
+      containers:
+      - env:
+        - name: MFE_CDN_URL
+          value: {{ MFE_EXTENSIONS_CDN_URL }}
+        name: mfe
