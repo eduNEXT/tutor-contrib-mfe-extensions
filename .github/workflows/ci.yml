@@ -65,6 +65,8 @@ jobs:
         run: uv build
 
       - name: Create Release
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           VERSION=$(uv version --short)
           uv run scriv print --version $VERSION --output release-body
