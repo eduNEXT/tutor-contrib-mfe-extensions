@@ -1,6 +1,6 @@
 [project]
 name = "tutor-contrib-mfe-extensions"
-version = "20.0.0"
+version = "20.1.0"
 description = "mfe_extensions plugin for Tutor"
 readme = "README.md"
 requires-python = ">=3.10"
