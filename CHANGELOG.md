@@ -13,6 +13,14 @@ See the fragment files in the [changelog.d/ directory](./changelog.d).
 
 <!-- scriv-insert-here -->
 
+<a id='changelog-20.1.0'></a>
+## 20.1.0 — 2026-01-23
+
+### Added
+
+- Configure Django's `STATIC_URL` setting for the LMS and CMS services based on
+  the value of `MFE_EXTENSIONS_CDN_URL`.
+
 <a id='changelog-20.0.0'></a>
 ## v20.0.0 (2025-07-02)
 
