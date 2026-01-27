@@ -44,3 +44,4 @@ MFE_CONFIG["COURSE_AUTHORING_MICROFRONTEND_URL"] = "{% if ENABLE_HTTPS %}https:/
 
 CORS_ORIGIN_WHITELIST.append("{% if ENABLE_HTTPS %}https://{% else %}http://{% endif %}{{ CMS_HOST }}")
 {% endif %}
+STATIC_URL = "{{ MFE_EXTENSIONS_CDN_URL }}/static/"

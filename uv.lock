@@ -727,7 +727,7 @@ sdist = { url = "https://files.pythonhosted.org/packages/ef/cd/f1fd08e2cc66139ff
 
 [[package]]
 name = "tutor-contrib-mfe-extensions"
-version = "20.1.0"
+version = "20.1.1"
 source = { editable = "." }
 dependencies = [
     { name = "tutor" },
