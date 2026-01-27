@@ -13,6 +13,13 @@ See the fragment files in the [changelog.d/ directory](./changelog.d).
 
 <!-- scriv-insert-here -->
 
+<a id='changelog-20.1.1'></a>
+## 20.1.1 — 2026-01-27
+
+### Fixed
+
+- The value of Django's `STATIC_URL` in studio should end in `/static/studio/`.
+
 <a id='changelog-20.1.0'></a>
 ## 20.1.0 — 2026-01-23
 
