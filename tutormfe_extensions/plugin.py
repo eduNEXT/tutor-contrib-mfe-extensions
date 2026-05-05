@@ -9,7 +9,6 @@ import importlib_resources
 from tutor import hooks
 from tutor.types import Config
 from tutormfe.hooks import MFE_APPS, MFE_ATTRS_TYPE
-from tutormfe.plugin import CORE_MFE_APPS
 
 from tutormfe_extensions.__about__ import __version__
 
@@ -75,7 +74,7 @@ def iter_mfes_per_service(service: str = "") -> Iterable[str]:
     """
     active_mfes = MFE_APPS.apply({})
     cms_mfes = {"authoring"}
-    lms_mfes = set(CORE_MFE_APPS) - cms_mfes
+    lms_mfes = set(active_mfes) - cms_mfes
 
     for mfe in active_mfes:
         if service == "lms" and mfe in lms_mfes:
