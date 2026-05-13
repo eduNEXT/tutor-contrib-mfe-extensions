@@ -2,6 +2,11 @@
 LEARNING_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/learning"
 MFE_CONFIG["LEARNING_BASE_URL"] = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/learning"
 
+% if get_mfe("admin-console") %}
+ADMIN_CONSOLE_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https://{% else %}http://{% endif %}{{ LMS_HOST }}/admin-console"
+MFE_CONFIG["ADMIN_CONSOLE_URL"] = ADMIN_CONSOLE_MICROFRONTEND_URL
+{% endif %}
+
 {%- if get_mfe("authn") %}
 AUTHN_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/authn"
 AUTHN_MICROFRONTEND_DOMAIN  = "{{ LMS_HOST }}/authn"
