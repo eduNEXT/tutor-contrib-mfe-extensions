@@ -24,6 +24,14 @@ def validate_mfe_config(mfe_setting_name: str):
 
 @hooks.Actions.CONFIG_LOADED.add()
 def load_config(config: Config):
+    # The tutormfe.plugins.get_mfes function gets cached before we can
+    # register the new list of MFES. This causes discrepancies when using
+    # MFE_*_MFE_APP settings in which some templates that use the `get_mfes`
+    # function will have stale values.
+    #
+    # Manually trigger the PLUGINS_LOADED action clears the cache.
+    hooks.Actions.PLUGIN_LOADED.do("tutormfe_extensions")
+
     @MFE_APPS.add()
     def _manage_mfes_from_config(mfe_list):
         for setting, value in config.items():

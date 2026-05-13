@@ -13,6 +13,18 @@ See the fragment files in the [changelog.d/ directory](./changelog.d).
 
 <!-- scriv-insert-here -->
 
+<a id='changelog-21.0.1'></a>
+## 21.0.1 — 2026-05-14
+
+### Added
+
+- Add support for the Admin Console MFE that was added to the Core MFEs in Ulmo.
+
+### Fixed
+
+- MFEs added or removed using the `MFE_*_MFE_APP` setting are now properly
+  rendered by the templates in tutor-mfe.
+
 <a id='changelog-21.0.0'></a>
 ## 21.0.0 — 2026-01-29
 
