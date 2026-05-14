@@ -13,6 +13,13 @@ See the fragment files in the [changelog.d/ directory](./changelog.d).
 
 <!-- scriv-insert-here -->
 
+<a id='changelog-21.0.2'></a>
+## 21.0.2 — 2026-05-14
+
+### Fixed
+
+- Add missing jinja2 block marker.
+
 <a id='changelog-21.0.1'></a>
 ## 21.0.1 — 2026-05-14
 
