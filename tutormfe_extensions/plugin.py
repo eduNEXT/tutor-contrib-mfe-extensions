@@ -9,7 +9,7 @@ import importlib_resources
 from tutor import hooks
 from tutor.types import Config
 from tutormfe.hooks import MFE_APPS
-from tutormfe.plugin import CORE_MFE_APPS
+from tutormfe.plugin import CORE_MFE_APPS, get_frontend_apps, is_frontend_app_enabled
 
 from .__about__ import __version__
 
@@ -72,16 +72,29 @@ def iter_mfes_per_service(service: str = "") -> Iterable[str]:
     Return the list of MFEs that should be hosted via path in the
     same domain as each service.
 
+    Includes legacy MFEs from MFE_APPS and frontend-base apps that are enabled
+    (e.g. instructor-dashboard), which are not registered in MFE_APPS.
+
     """
     active_mfes = MFE_APPS.apply({})
     cms_mfes = {"authoring"}
     lms_mfes = set(CORE_MFE_APPS) - cms_mfes
+    seen: set[str] = set()
 
     for mfe in active_mfes:
         if service == "lms" and mfe in lms_mfes:
+            seen.add(mfe)
             yield mfe
         if service == "cms" and mfe in cms_mfes:
+            seen.add(mfe)
             yield mfe
+
+    if service == "lms":
+        for app_name in get_frontend_apps():
+            if app_name in seen or app_name in cms_mfes:
+                continue
+            if is_frontend_app_enabled(app_name):
+                yield app_name
 
 
 hooks.Filters.ENV_TEMPLATE_ROOTS.add_items(
