@@ -1,6 +1,6 @@
 [project]
 name = "tutor-contrib-mfe-extensions"
-version = "21.0.2"
+version = "22.0.0"
 description = "mfe_extensions plugin for Tutor"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -16,10 +16,11 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
 ]
 dependencies = [
-    "tutor~=21.0",
-    "tutor-mfe~=21.0",
+    "tutor @ git+https://github.com/overhangio/tutor@59264ca9f9c6a8e67622ae72080684ffc6ec7e2a",
+    "tutor-mfe @ git+https://github.com/overhangio/tutor-mfe@d0804c2590431780d3a0ed6d24701c20eef5a86d",
 ]
 
 [project.urls]

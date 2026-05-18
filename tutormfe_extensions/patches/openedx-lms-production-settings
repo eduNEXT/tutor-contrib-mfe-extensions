@@ -43,6 +43,14 @@ MFE_CONFIG["ACCOUNT_PROFILE_URL"] = "{% if ENABLE_HTTPS %}https{% else %}http{% 
 COMMUNICATIONS_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/communications"
 {% endif %}
 
+{% if get_mfe("catalog") %}
+CATALOG_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/catalog"
+{% endif %}
+
+{% if is_frontend_app_enabled("instructor-dashboard") %}
+INSTRUCTOR_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/instructor-dashboard"
+{% endif %}
+
 {% if get_mfe("authoring") %}
 MFE_CONFIG["COURSE_AUTHORING_MICROFRONTEND_URL"] = "{% if ENABLE_HTTPS %}https://{% else %}http://{% endif %}{{ LMS_HOST }}/authoring"
 {% endif %}
