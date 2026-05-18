@@ -1,0 +1,6 @@
+# Keep the image compatible with the stock tutor-mfe configuration: the site is
+# built with PUBLIC_PATH=".../apps/" (see mfe-dockerfile-pre-npm-build-site),
+# but without this plugin there is no /apps/ route in the Caddyfile. The stock
+# catch-all serves files from the site dist directory, so expose the bundles
+# under an "apps" symlink to make them resolvable there as well.
+RUN ln -s . /openedx/site/dist/apps

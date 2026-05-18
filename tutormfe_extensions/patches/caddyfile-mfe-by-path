@@ -1,24 +1,57 @@
 {%- if MFE_EXTENSIONS_BY_PATH %}
+# There are some subpaths that need to be routed directly to the LMS but
+# conflict with the paths that we use for the MFEs (mostly /account/) so we set
+# higher priorty handles for those cases.
+handle /account/settings {
+    reverse_proxy lms:8000
+}
+handle /account/password {
+    reverse_proxy lms:8000
+}
+handle /account/finish_auth {
+    reverse_proxy lms:8000
+}
 {%- for app_name in iter_mfes_per_service("lms") %}
+{%- if not is_frontend_app_enabled(app_name) %}
 @mfe_{{ app_name }} {
     path /{{ app_name }} /{{ app_name }}/*
 }
 handle @mfe_{{ app_name }} {
     redir /{{ app_name }} /{{ app_name }}/
-    {%- if app_name == "account" %}
-    handle /account/settings {
-        reverse_proxy lms:8000
-    }
-    handle /account/password {
-        reverse_proxy lms:8000
-    }
-    handle /account/finish_auth {
-        reverse_proxy lms:8000
-    }
-    {%- endif %}
     reverse_proxy mfe:8002 {
         header_up Host {host}
     }
 }
+{%- endif %}
 {%- endfor %}
+{%- if get_frontend_apps() %}
+# Frontend-site app pages are hosted at top-level paths on the LMS domain
+# (e.g. /instructor-dashboard) and forwarded to the MFE container, whose
+# catch-all serves them from the frontend-site shell. An app enabled as a
+# frontend app supersedes its legacy MFE counterpart, so it is served from the
+# frontend-site instead of the legacy build. Only the static bundles are
+# namespaced under /apps/, which the MFE container also serves.
+{%- for app_name in get_frontend_apps() %}
+{%- if is_frontend_app_enabled(app_name) %}
+@mfe_site_{{ app_name }} {
+    path /{{ app_name }} /{{ app_name }}/*
+}
+handle @mfe_site_{{ app_name }} {
+    reverse_proxy mfe:8002 {
+        header_up Host {host}
+    }
+}
+{%- endif %}
+{%- endfor %}
+# The frontend-site static bundles are namespaced under /apps/ on the LMS
+# domain. The mfe container strips the prefix and serves the site files.
+@mfe_frontend_site {
+    path /apps /apps/*
+}
+handle @mfe_frontend_site {
+    reverse_proxy mfe:8002 {
+        header_up Host {host}
+    }
+}
+{%- endif %}
 {%- endif %}

@@ -1,0 +1,13 @@
+{%- if get_frontend_apps() %}
+# The frontend-site static bundles are namespaced under /apps/ (see the
+# mfe-dockerfile-pre-npm-build-site patch, which sets PUBLIC_PATH=".../apps/").
+@mfe_frontend_site {
+    path /apps /apps/*
+}
+handle @mfe_frontend_site {
+    uri strip_prefix /apps
+    root * /openedx/dist/site
+    try_files /{path} /index.html
+    file_server
+}
+{%- endif %}
