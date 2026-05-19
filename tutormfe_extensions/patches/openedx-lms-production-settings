@@ -1,4 +1,7 @@
 {% if MFE_EXTENSIONS_BY_PATH %}
+MFE_CONFIG["BASE_URL"] = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}"
+FRONTEND_SITE_CONFIG["baseUrl"] = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}"
+
 LEARNING_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/learning"
 MFE_CONFIG["LEARNING_BASE_URL"] = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/learning"
 

@@ -1,1 +1,2 @@
 {{ patch("caddyfile-mfe-by-path") }}
+{{ patch("caddyfile-frontend-site-assets") }}
