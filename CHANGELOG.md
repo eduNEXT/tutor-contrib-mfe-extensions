@@ -13,6 +13,23 @@ See the fragment files in the [changelog.d/ directory](./changelog.d).
 
 <!-- scriv-insert-here -->
 
+<a id='changelog-22.0.0'></a>
+## 22.0.0 — 2026-05-18
+
+### Added
+
+- Support to verawood release
+
+* Extend BY_PATH hosting for **frontend-site apps** (e.g. `instructor-dashboard`)
+
+* Route enabled frontend apps through LMS Caddy when `MFE_EXTENSIONS_BY_PATH` is on.
+
+* Proxy frontend-site webpack assets served at the LMS domain root (`runtime.*.js`,
+  `*-main.*.js/css`) to the MFE container, fixing blank instructor dashboard pages.
+
+* Set `INSTRUCTOR_MICROFRONTEND_URL`, `CATALOG_MICROFRONTEND_URL`, and LMS
+  `MFE_CONFIG` / `FRONTEND_SITE_CONFIG` base URLs for BY_PATH on the LMS host.
+
 <a id='changelog-21.0.2'></a>
 ## 21.0.2 — 2026-05-14
 
