@@ -1,4 +1,7 @@
 {% if MFE_EXTENSIONS_BY_PATH %}
+MFE_CONFIG["BASE_URL"] = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}"
+FRONTEND_SITE_CONFIG["baseUrl"] = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}"
+
 LEARNING_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/learning"
 MFE_CONFIG["LEARNING_BASE_URL"] = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/learning"
 
@@ -7,7 +10,7 @@ ADMIN_CONSOLE_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https://{% else %}http:/
 MFE_CONFIG["ADMIN_CONSOLE_URL"] = ADMIN_CONSOLE_MICROFRONTEND_URL
 {% endif %}
 
-{%- if get_mfe("authn") %}
+{%- if get_mfe("authn") or is_frontend_app_enabled("authn") %}
 AUTHN_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/authn"
 AUTHN_MICROFRONTEND_DOMAIN  = "{{ LMS_HOST }}/authn"
 {%- endif %}
@@ -26,7 +29,7 @@ MFE_CONFIG["DISCUSSIONS_MFE_BASE_URL"] = DISCUSSIONS_MICROFRONTEND_URL
 WRITABLE_GRADEBOOK_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/gradebook"
 {% endif %}
 
-{% if get_mfe("learner-dashboard") %}
+{% if get_mfe("learner-dashboard") or is_frontend_app_enabled("learner-dashboard") %}
 LEARNER_HOME_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/learner-dashboard/"
 {% endif %}
 
@@ -41,6 +44,14 @@ MFE_CONFIG["ACCOUNT_PROFILE_URL"] = "{% if ENABLE_HTTPS %}https{% else %}http{% 
 
 {% if get_mfe("communications") %}
 COMMUNICATIONS_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/communications"
+{% endif %}
+
+{% if get_mfe("catalog") %}
+CATALOG_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/catalog"
+{% endif %}
+
+{% if is_frontend_app_enabled("instructor-dashboard") %}
+INSTRUCTOR_MICROFRONTEND_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/instructor-dashboard"
 {% endif %}
 
 {% if get_mfe("authoring") %}

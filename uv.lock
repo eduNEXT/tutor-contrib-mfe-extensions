@@ -812,8 +812,8 @@ wheels = [
 
 [[package]]
 name = "tutor"
-version = "21.0.6"
-source = { registry = "https://pypi.org/simple" }
+version = "22.0.0"
+source = { git = "https://github.com/overhangio/tutor?rev=59264ca9f9c6a8e67622ae72080684ffc6ec7e2a#59264ca9f9c6a8e67622ae72080684ffc6ec7e2a" }
 dependencies = [
     { name = "appdirs" },
     { name = "click" },
@@ -827,11 +827,10 @@ dependencies = [
     { name = "pyyaml" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/26/d8/3d93bc551ba2e5035e4fc107a0d89d0e6b70addc1a7134c5d4c5b92ff406/tutor-21.0.6.tar.gz", hash = "sha256:36655840644289becdbad642d1b70677475f03eebf9925ebcd394f686f9ed25f", size = 112956, upload-time = "2026-05-06T12:07:53.473Z" }
 
 [[package]]
 name = "tutor-contrib-mfe-extensions"
-version = "21.0.2"
+version = "22.0.0"
 source = { editable = "." }
 dependencies = [
     { name = "tutor" },
@@ -847,8 +846,8 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "tutor", specifier = "~=21.0" },
-    { name = "tutor-mfe", specifier = "~=21.0" },
+    { name = "tutor", git = "https://github.com/overhangio/tutor?rev=59264ca9f9c6a8e67622ae72080684ffc6ec7e2a" },
+    { name = "tutor-mfe", git = "https://github.com/overhangio/tutor-mfe?rev=d0804c2590431780d3a0ed6d24701c20eef5a86d" },
 ]
 
 [package.metadata.requires-dev]
@@ -860,12 +859,11 @@ dev = [
 
 [[package]]
 name = "tutor-mfe"
-version = "21.0.0"
-source = { registry = "https://pypi.org/simple" }
+version = "22.0.0"
+source = { git = "https://github.com/overhangio/tutor-mfe?rev=d0804c2590431780d3a0ed6d24701c20eef5a86d#d0804c2590431780d3a0ed6d24701c20eef5a86d" }
 dependencies = [
     { name = "tutor" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/29/51/591e2608026176c10a4b01fdd6e637324d1158e35f3b54aabe3214cb9d33/tutor_mfe-21.0.0.tar.gz", hash = "sha256:2a266d9554cbeeb2ac01391071308c14cd5a78b39f9407f088e28373a3870b17", size = 44352, upload-time = "2026-01-16T11:55:17.916Z" }
 
 [[package]]
 name = "ty"
