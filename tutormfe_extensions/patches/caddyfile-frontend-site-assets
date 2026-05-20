@@ -1,4 +1,4 @@
-{%- if MFE_EXTENSIONS_BY_PATH and get_frontend_apps() %}
+{% comment %} {%- if MFE_EXTENSIONS_BY_PATH and get_frontend_apps() %}
 # Frontend-site bundles (e.g. runtime.*.js) are served from /openedx/dist/site at the
 # MFE root. When hosting by path on the LMS domain, proxy those asset paths to mfe.
 @mfe_frontend_site_assets {
@@ -9,4 +9,4 @@ handle @mfe_frontend_site_assets {
         header_up Host {host}
     }
 }
-{%- endif %}
+{%- endif %} {% endcomment %}
