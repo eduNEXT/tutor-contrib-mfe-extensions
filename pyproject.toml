@@ -19,8 +19,8 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
 ]
 dependencies = [
-    "tutor @ git+https://github.com/overhangio/tutor@59264ca9f9c6a8e67622ae72080684ffc6ec7e2a",
-    "tutor-mfe @ git+https://github.com/overhangio/tutor-mfe@d0804c2590431780d3a0ed6d24701c20eef5a86d",
+    "tutor @ git+https://github.com/overhangio/tutor.git@59264ca9f9c6a8e67622ae72080684ffc6ec7e2a",
+    "tutor-mfe @ git+https://github.com/overhangio/tutor-mfe.git@d0804c2590431780d3a0ed6d24701c20eef5a86d",
 ]
 
 [project.urls]
@@ -45,6 +45,11 @@ lint.select = [
   "I",
   "UP",
 ]
+
+# TODO: remove before merging
+[tool.uv.sources]
+tutor = {git = "https://github.com/overhangio/tutor", rev = "59264ca9f9c6a8e67622ae72080684ffc6ec7e2a"}  # Verawood
+tutor-mfe = {git = "https://github.com/overhangio/tutor-mfe", rev = "d0804c2590431780d3a0ed6d24701c20eef5a86d"} # Verawood
 
 [tool.scriv]
 version = "literal: pyproject.toml: project.version"
