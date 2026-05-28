@@ -13,6 +13,14 @@ See the fragment files in the [changelog.d/ directory](./changelog.d).
 
 <!-- scriv-insert-here -->
 
+<a id='changelog-21.0.3'></a>
+## 21.0.3 — 2026-05-28
+
+### Fixed
+
+- Avoid crashing when using the `MFE_*_MFE_APP` setting to disable an MFE that
+  is not present.
+
 <a id='changelog-21.0.2'></a>
 ## 21.0.2 — 2026-05-14
 

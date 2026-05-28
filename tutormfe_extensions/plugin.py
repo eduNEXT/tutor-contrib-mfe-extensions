@@ -8,15 +8,13 @@ from glob import glob
 import importlib_resources
 from tutor import hooks
 from tutor.types import Config
-from tutormfe.hooks import MFE_APPS
+from tutormfe.hooks import MFE_APPS, MFE_ATTRS_TYPE
 from tutormfe.plugin import CORE_MFE_APPS
 
-from .__about__ import __version__
-
-CORE_MFES_CONFIG = {}
+from tutormfe_extensions.__about__ import __version__
 
 
-def validate_mfe_config(mfe_setting_name: str):
+def validate_mfe_config(mfe_setting_name: str) -> str | None:
     if mfe_setting_name.startswith("MFE_") and mfe_setting_name.endswith("_MFE_APP"):
         return mfe_setting_name.replace("_MFE_APP", "").replace("MFE_", "").replace("_", "-").lower()
     return None
@@ -33,26 +31,28 @@ def load_config(config: Config):
     hooks.Actions.PLUGIN_LOADED.do("tutormfe_extensions")
 
     @MFE_APPS.add()
-    def _manage_mfes_from_config(mfe_list):
-        for setting, value in config.items():
-            mfe_name = validate_mfe_config(setting)
-            if not mfe_name:
+    def _manage_mfes_from_config(mfes: dict[str, MFE_ATTRS_TYPE]):
+        for setting_name, setting_value in config.items():
+            mfe_key = validate_mfe_config(setting_name)
+            if not mfe_key:
                 continue
 
-            if value is None:
-                mfe_list.pop(mfe_name)
+            if setting_value is None:
+                mfes.pop(mfe_key, None)
                 continue
 
-            mfe_defaults = CORE_MFES_CONFIG.get(setting, {})
-            mfe_defaults.update(value)
+            if not isinstance(setting_value, dict):
+                continue
 
-            mfe_list[mfe_defaults["name"]] = {
-                "repository": mfe_defaults["repository"],
-                "port": mfe_defaults["port"],
-                "version": mfe_defaults["version"],
+            mfes[mfe_key] = {
+                "repository": setting_value["repository"],
+                "port": setting_value["port"],
             }
 
-        return mfe_list
+            if "version" in setting_value:
+                mfes[mfe_key]["version"] = setting_value["version"]
+
+        return mfes
 
 
 hooks.Filters.CONFIG_DEFAULTS.add_items(
