@@ -69,8 +69,13 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
 
 def iter_mfes_per_service(service: str = "") -> Iterable[str]:
     """
-    Return the list of MFEs that should be hosted via path in the
+    Return the list of legacy MFEs that should be hosted via path in the
     same domain as each service.
+
+    Includes only legacy MFEs from MFE_APPS that are not superseded by an
+    enabled frontend app. Frontend-base apps (e.g. instructor-dashboard) are
+    bundled into the frontend-site and are served at their own top-level path
+    by the frontend-app routes in the caddyfile patches.
 
     """
     active_mfes = MFE_APPS.apply({})

@@ -13,7 +13,24 @@ See the fragment files in the [changelog.d/ directory](./changelog.d).
 
 <!-- scriv-insert-here -->
 
-<a id='changelog-21.0.3'></a>
+<a id='changelog-22.0.0'></a>
+
+## 22.0.0 — 2026-05-18
+
+### Added
+
+- Support for the Verawood release:
+
+  Verawood introduces support for
+  [frontend-base](https://github.com/openedx/frontend-base) apps that replace
+  the traditional MFEs. The new frontend-apps can also be hosted as a subpath of
+  the LMS/CMS, the shared static bundle is namespaced in the `/apps/` subpath
+  while the index page for each app is served through the standard `{{ LMS_HOST }}/{{
+  app_name }}`.
+- Support the new default catalog MFE.
+
+<a id='changelog-21.0.2'></a>
+
 ## 21.0.3 — 2026-05-28
 
 ### Fixed
@@ -22,6 +39,7 @@ See the fragment files in the [changelog.d/ directory](./changelog.d).
   is not present.
 
 <a id='changelog-21.0.2'></a>
+
 ## 21.0.2 — 2026-05-14
 
 ### Fixed
@@ -29,6 +47,7 @@ See the fragment files in the [changelog.d/ directory](./changelog.d).
 - Add missing jinja2 block marker.
 
 <a id='changelog-21.0.1'></a>
+
 ## 21.0.1 — 2026-05-14
 
 ### Added
@@ -41,6 +60,7 @@ See the fragment files in the [changelog.d/ directory](./changelog.d).
   rendered by the templates in tutor-mfe.
 
 <a id='changelog-21.0.0'></a>
+
 ## 21.0.0 — 2026-01-29
 
 ### Added
@@ -53,6 +73,7 @@ See the fragment files in the [changelog.d/ directory](./changelog.d).
   patch.
 
 <a id='changelog-20.1.1'></a>
+
 ## 20.1.1 — 2026-01-27
 
 ### Fixed
@@ -60,6 +81,7 @@ See the fragment files in the [changelog.d/ directory](./changelog.d).
 - The value of Django's `STATIC_URL` in studio should end in `/static/studio/`.
 
 <a id='changelog-20.1.0'></a>
+
 ## 20.1.0 — 2026-01-23
 
 ### Added
@@ -68,6 +90,7 @@ See the fragment files in the [changelog.d/ directory](./changelog.d).
   the value of `MFE_EXTENSIONS_CDN_URL`.
 
 <a id='changelog-20.0.0'></a>
+
 ## v20.0.0 (2025-07-02)
 
 ### Added
@@ -88,7 +111,6 @@ See the fragment files in the [changelog.d/ directory](./changelog.d).
   ([#15](https://github.com/eduNEXT/tutor-contrib-mfe-extensions/pull/15),
   [`4fff01a`](https://github.com/eduNEXT/tutor-contrib-mfe-extensions/commit/4fff01a3a40cb8bdab44413ffdabac0d9dbc8c37))
 
-
 ## v19.0.0 (2024-12-17)
 
 ### Chores
@@ -100,7 +122,6 @@ See the fragment files in the [changelog.d/ directory](./changelog.d).
 
 - Empty commit to trigger a version bump
   ([`5ae11a7`](https://github.com/eduNEXT/tutor-contrib-mfe-extensions/commit/5ae11a70a2b7594f7f0c5b300da28b670fd504f6))
-
 
 ## v18.1.0 (2024-12-17)
 
@@ -114,7 +135,6 @@ See the fragment files in the [changelog.d/ directory](./changelog.d).
 - Sumac release ([#11](https://github.com/eduNEXT/tutor-contrib-mfe-extensions/pull/11),
   [`45fef46`](https://github.com/eduNEXT/tutor-contrib-mfe-extensions/commit/45fef4673b36a00c901b7176cf7115c0e90eeb1e))
 
-
 ## v18.0.0 (2024-07-15)
 
 ### Features
@@ -122,14 +142,14 @@ See the fragment files in the [changelog.d/ directory](./changelog.d).
 - Support for redwood ([#9](https://github.com/eduNEXT/tutor-contrib-mfe-extensions/pull/9),
   [`2dbce5e`](https://github.com/eduNEXT/tutor-contrib-mfe-extensions/commit/2dbce5ea1e8332245f5fd3913d4f81ba30cc41cc))
 
-* allow MFEs to be hosted on either the LMS or the CMS
+- allow MFEs to be hosted on either the LMS or the CMS
 
 Before all the MFEs that were hosted by path were hosted in the LMS domain. For certain MFEs
   (course-authoring) the CMS domain is more appropriate.
 
-* point the MFEs URLs to either the LMS or the CMS
+- point the MFEs URLs to either the LMS or the CMS
 
-* handle special cases in the $LMS_HOST/account route.
+- handle special cases in the $LMS_HOST/account route.
 
 The `/account/password` endpoint is used in the 'forgot password' flow, for that reason we must
   forward those requests to the LMS.
@@ -138,14 +158,12 @@ The `/account/settings` is more specific to the multitenant use case. Some sites
   to use the legacy pages but the current configuration would send every subpath of `/account/` to
   the MFE, we make an exception for the legacy URL.
 
-
 ## v17.0.0 (2024-06-03)
 
 ### Features
 
 - Add support to quince ([#8](https://github.com/eduNEXT/tutor-contrib-mfe-extensions/pull/8),
   [`6811d69`](https://github.com/eduNEXT/tutor-contrib-mfe-extensions/commit/6811d69784792cc9a2ac692a8ee81b6d9e0c6588))
-
 
 ## v16.0.0 (2024-01-26)
 
@@ -158,7 +176,6 @@ The `/account/settings` is more specific to the multitenant use case. Some sites
 - Palm support ([#7](https://github.com/eduNEXT/tutor-contrib-mfe-extensions/pull/7),
   [`5b7eb9d`](https://github.com/eduNEXT/tutor-contrib-mfe-extensions/commit/5b7eb9da9110de66cc402839b12f5d790bf1cbb8))
 
-
 ## v1.2.0 (2023-10-24)
 
 ### Features
@@ -170,7 +187,6 @@ The `/account/settings` is more specific to the multitenant use case. Some sites
 This includes an additional executable script that is mounted to the MFE pod and is run at container
   startup time. The script replaces a placeholder string with the MFE_EXTENSIONS_CDN_URL setting.
 
-
 ## v1.1.0 (2023-09-22)
 
 ### Features
@@ -178,7 +194,6 @@ This includes an additional executable script that is mounted to the MFE pod and
 - Add routing of MFEs via path
   ([#1](https://github.com/eduNEXT/tutor-contrib-mfe-extensions/pull/1),
   [`e0b837d`](https://github.com/eduNEXT/tutor-contrib-mfe-extensions/commit/e0b837d079626c246bc2ccb2e55cffe137951849))
-
 
 ## v1.0.0 (2023-08-29)
 

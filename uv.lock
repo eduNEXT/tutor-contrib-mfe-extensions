@@ -582,6 +582,7 @@ wheels = [
 name = "librt"
 version = "0.14.0"
 source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/0d/ee/999b97f4b8eb28c4416f9f8a6708077daa1639145cde1c25ac76517df966/librt-0.14.0.tar.gz", hash = "sha256:474eedc5e910d88c1a12193a238f69b2522561d6f10bda9fbe9e70961d2e64e3", size = 214292, upload-time = "2026-08-06T14:52:21.049Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/ec/fe/c84ae5dec0b6fd9a6f3ea5c9aca7a9a96f1e2b7ed9a713eee41b692e2ec7/librt-0.14.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:7dd8270544defd2a25e57f4bf2ad94ff62a74addf7e82a479eea4ce9c5687516", size = 148643, upload-time = "2026-08-06T14:49:19.233Z" },
     { url = "https://files.pythonhosted.org/packages/ab/6d/5248bfe9260b699495f414f7bdf7e52fc7dc7c9a6124bea563182f9d3a32/librt-0.14.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:36044fb53cc1aa274a69406b67c7c8d90511fdf01389a6cf6d04f7b9bc57f067", size = 153536, upload-time = "2026-08-06T14:49:20.804Z" },
@@ -1405,7 +1406,7 @@ wheels = [
 
 [[package]]
 name = "tutor"
-version = "21.0.9"
+version = "22.0.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "appdirs" },
@@ -1420,11 +1421,11 @@ dependencies = [
     { name = "pyyaml" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/d9/93/0660cdcfbee8a2e0e7b0e3bdd0dcf73ec5c1fdbecb5ad66a696078be681d/tutor-21.0.9.tar.gz", hash = "sha256:4c7db9b1486ab9266a63090b082903fc416481ac20be96ce41b0c609ae21a139", size = 116852, upload-time = "2026-08-04T11:31:53.819Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/d7/6c/f58136bcbc099fb97ecb0acca29fa89a6b77d19f2c4405c60a8faff2c1d6/tutor-22.0.0.tar.gz", hash = "sha256:395974598ca2726b19726edfca81dab40f03341288e775ac80c1687d4b8033bb", size = 117037, upload-time = "2026-08-05T11:25:12.348Z" }
 
 [[package]]
 name = "tutor-contrib-mfe-extensions"
-version = "21.0.3"
+version = "22.0.0"
 source = { editable = "." }
 dependencies = [
     { name = "tutor" },
@@ -1440,8 +1441,8 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "tutor", specifier = "~=21.0" },
-    { name = "tutor-mfe", specifier = "~=21.0" },
+    { name = "tutor", specifier = "~=22.0" },
+    { name = "tutor-mfe", specifier = "~=22.0" },
 ]
 
 [package.metadata.requires-dev]
@@ -1453,12 +1454,12 @@ dev = [
 
 [[package]]
 name = "tutor-mfe"
-version = "21.0.1"
+version = "22.0.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "tutor" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/6a/00/40bb5f6df405a91a08b70c88d907153727ae159ad4944d19183fcc75d3c4/tutor_mfe-21.0.1.tar.gz", hash = "sha256:8b49a4525767604e0750598e804ac863df48181ee9fdec83d54ef85765427416", size = 44696, upload-time = "2026-08-04T12:04:17.771Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ad/c5/ba7cb3a6759a9698830d1a0a6cd778b49a8bb3f561566a4d4d4b6f4e3291/tutor_mfe-22.0.0.tar.gz", hash = "sha256:a5a7a3448fe8ade579cd896e8d9b24b491b18a059dac47a10ad4572a7e70181d", size = 249874, upload-time = "2026-08-05T14:01:07.834Z" }
 
 [[package]]
 name = "ty"

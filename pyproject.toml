@@ -1,6 +1,6 @@
 [project]
 name = "tutor-contrib-mfe-extensions"
-version = "21.0.3"
+version = "22.0.0"
 description = "mfe_extensions plugin for Tutor"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -16,10 +16,11 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
 ]
 dependencies = [
-    "tutor~=21.0",
-    "tutor-mfe~=21.0",
+    "tutor~=22.0",
+    "tutor-mfe~=22.0",
 ]
 
 [project.urls]
