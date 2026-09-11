@@ -11,6 +11,19 @@ handle /account/password {
 handle /account/finish_auth {
     reverse_proxy lms:8000
 }
+# A frontend app name can collide with a real LMS URL prefix owned by an
+# unrelated Django app - e.g. "aspects", claimed by both a frontend-base app
+# and platform-plugin-aspects's own /aspects/ REST API. Set the same kind of
+# higher priority handles for those known endpoints.
+handle /aspects/superset_guest_token/* {
+    reverse_proxy lms:8000
+}
+handle /aspects/superset_in_context_dashboard/* {
+    reverse_proxy lms:8000
+}
+handle /aspects/superset_instructor_dashboard/* {
+    reverse_proxy lms:8000
+}
 {%- for app_name in iter_mfes_per_service("lms") %}
 {%- if not is_frontend_app_enabled(app_name) %}
 @mfe_{{ app_name }} {
