@@ -13,6 +13,20 @@ See the fragment files in the [changelog.d/ directory](./changelog.d).
 
 <!-- scriv-insert-here -->
 
+<a id='changelog-22.0.1'></a>
+## 22.0.1 — 2026-09-14
+
+### Fixed
+
+- The "aspects" frontend app name collides with `platform-plugin-aspects`'s own
+  `/aspects/` REST API on the LMS domain. The by-path route generated for the
+  "aspects" frontend app was a wildcard match on `/aspects/*`, so it shadowed
+  that API and broke Studio's in-context analytics and the instructor
+  dashboard's Reports tab. Added explicit high priority Caddyfile handles for
+  the known aspects API endpoints (`superset_guest_token`,
+  `superset_in_context_dashboard`, `superset_instructor_dashboard`), mirroring
+  the existing `/account/*` handles used for the same kind of collision.
+
 <a id='changelog-22.0.0'></a>
 
 ## 22.0.0 — 2026-05-18
