@@ -43,6 +43,14 @@ jobs:
       - name: Validate package build
         run: uv build
 
+      - name: Verify plugin enablement
+        env:
+          TUTOR_ROOT: testing
+          TUTOR_PLUGINS_ROOT: testing/plugins
+        run: |
+          mkdir -p "${TUTOR_PLUGINS_ROOT}"
+          uv run tutor plugins enable mfe-extensions
+
   release:
     name: Build and publish package
     needs: tests
